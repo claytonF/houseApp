@@ -2,6 +2,9 @@ $(document).on("ready", function(){
 
 
         var data = [];
+        var thisData;
+        var icookieData;
+        //console.log(typeof(data));
         //var data = {};
         //console.log(data);
 
@@ -11,23 +14,26 @@ $(document).on("ready", function(){
             var k = $(this).attr("id");
             var thisData = {};
             thisData[k] = v;
+            console.log(thisData);
             data.push(thisData);
+            //console.log(data);
+            //data
+            
+
             //$.extend( data, thisData )
             
           });
         };
 
         function setData(cookieData) {
-          cookieData = cookieData.replace(/[{()}]/g, '');
-          cookieData = cookieData.replace(/[\[\]']+/g,'');
-          cookieData = cookieData.replace(/['"]+/g, '');
-          cookieData = cookieData.split(",");
-
+          console.log(cookieData);
+          console.log(JSON.parse(cookieData));
           for (i = 0; i < cookieData.length; i++) {
             icookieData = cookieData[i].split(":");
             //console.log(icookieData);
-            $("#" + icookieData[0]).val(icookieData[1])
+            //$("#" + icookieData[0]).val(icookieData[1])
           };
+          
         };
 
 
@@ -79,7 +85,7 @@ $(document).on("ready", function(){
 
 
         $("#formSubmit").on("click", function(e){
-          //e.preventDefault();
+          e.preventDefault();
           getData();
           createCookie('purchaseData',JSON.stringify(data),1000);
         });

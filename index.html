@@ -31,7 +31,7 @@
                 <label for="marketValue">Full market value</label>
                 <div class="input-group">
                   <div class="input-group-addon">£</div>
-                  <input id="marketValue" type="number" min="100000" max="1000000" step="5000" class="form-control">
+                  <input id="marketValue" data-bind="value:house()[0].marketValue" type="number" min="100000" max="1000000" step="5000" class="form-control">
                   <div class="input-group-addon clear"><span aria-hidden="true">&times;</span></div>
                 </div>
               </div>
@@ -39,7 +39,7 @@
                 <label for="share">Percentage purchasing</label>
                 <div class="input-group">
                   <div class="input-group-addon">%</div>
-                  <input id="share" type="number" min="25" max="75" step="5" class="form-control">
+                  <input id="share"  data-bind="value:house()[1].share" type="number" min="25" max="75" step="5" class="form-control">
                   <div class="input-group-addon clear"><span aria-hidden="true">&times;</span></div>
                 </div>
               </div>
@@ -47,7 +47,7 @@
                 <label for="currentSavings">Total cash available for purchase</label>
                 <div class="input-group">
                   <div class="input-group-addon">£</div>
-                  <input id="currentSavings" type="number" min="1000" max="1000000" step="1000" class="form-control" >
+                  <input id="currentSavings"  data-bind="value:house()[2].currentSavings" type="number" min="1000" max="1000000" step="1000" class="form-control" >
                   <div class="input-group-addon clear"><span aria-hidden="true">&times;</span></div>
                 </div>
               </div>
@@ -55,7 +55,7 @@
                 <label for="interestRate">Mortgage Interest rate</label>
                 <div class="input-group">
                   <div class="input-group-addon">%</div>          
-                  <input id="interestRate" type="number" min="1" max="10" step="0.5" class="form-control" >
+                  <input id="interestRate" data-bind="value:house()[3].interestRate" type="number" min="1" max="10" step="0.5" class="form-control" >
                   <div class="input-group-addon clear"><span aria-hidden="true">&times;</span></div>
                 </div>
               </div>
@@ -63,7 +63,7 @@
                 <label for="repaymentTerm">Mortgage repayment term (years)</label>
                 <div class="input-group">
                   <div class="input-group-addon">yrs</div>          
-                  <input id="repaymentTerm" type="number" min="25" max="30" step="1" class="form-control" >
+                  <input id="repaymentTerm" data-bind="value:house()[4].repaymentTerm" type="number" min="25" max="30" step="1" class="form-control" >
                   <div class="input-group-addon clear"><span aria-hidden="true">&times;</span></div>
                 </div>
               </div>
@@ -71,7 +71,7 @@
                 <label for="income">Yearly income (total for joint applicants)</label>
                 <div class="input-group">
                   <div class="input-group-addon">£</div>
-                  <input id="income" type="number" min="10000" max="80000" step="500" class="form-control">
+                  <input id="income" data-bind="value:house()[5].income" type="number" min="10000" max="80000" step="500" class="form-control">
                   <div class="input-group-addon clear"><span aria-hidden="true">&times;</span></div>
                 </div>
               </div>
@@ -79,14 +79,14 @@
                 <label for="netMonthly">Net monthly income (total for joint applicants)</label>
                 <div class="input-group">
                   <div class="input-group-addon">£</div>
-                  <input id="netMonthly" type="number" min="100" max="10000" step="1" class="form-control">
+                  <input id="netMonthly" data-bind="value:house()[6].netMonthly" type="number" min="100" max="10000" step="1" class="form-control">
                   <div class="input-group-addon clear"><span aria-hidden="true">&times;</span></div>
                 </div>
               </div>              <div class="form-group">
                 <label for="serviceCharge">Monthly service charge (apartments)</label>
                 <div class="input-group">
                   <div class="input-group-addon">£</div>
-                  <input id="serviceCharge" type="number" min="10" max="1000" step="1" class="form-control">
+                  <input id="serviceCharge" data-bind="value:house()[7].serviceCharge" type="number" min="10" max="1000" step="1" class="form-control">
                   <div class="input-group-addon clear"><span aria-hidden="true">&times;</span></div>
                 </div>
               </div> 
@@ -94,7 +94,7 @@
                 <label for="rentPercentage">Rent percentage</label>
                 <div class="input-group">
                   <div class="input-group-addon">%</div>
-                  <input id="rentPercentage" type="number" min="0" max="5" step="0.1" class="form-control">
+                  <input id="rentPercentage" data-bind="value:house()[8].rentPercentage" type="number" min="0" max="5" step="0.1" class="form-control">
                   <div class="input-group-addon clear"><span aria-hidden="true">&times;</span></div>
                 </div>
               </div>         <button class="btn btn-primary" id="formSubmit">Update</button>
@@ -107,7 +107,7 @@
         <div class="panel panel-default">
           <div class="panel-body">
             <h3>THE IMPORTANT STUFF</h3>
-            <div>Savings required: <span id="savings-result"></span></div>
+            <div>Savings required: <span id="savings-result" data-bind="text:house()"></span></div>
             <div>Multiple of income (salary) (don't want this to be more than 4.5x): <span id="savings-result"></span></div>
             <div>% of net income (Don't want this to be more than 40-43%):</div>
             <div>Amount left each month after house costs:</div>
@@ -130,8 +130,8 @@
 
       </div>
     </div>
-  
-    <script type="text/javascript" src="script.js"></script>
+  <span ></span>
+    <!--<script type="text/javascript" src="script.js"></script>-->
     <script type="text/javascript" src="app.viewModel.js"></script>
 
   </body>
