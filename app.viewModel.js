@@ -16,9 +16,8 @@ function readCookie(name) {
 
 function setData(cookieData) {
   var houseData = JSON.parse(cookieData);
-  console.log(houseData);
   function houseModel() {
-    
+    self = this;
     this.marketValue = ko.observable(houseData[0].marketValue);
     this.share = ko.observable(houseData[1].share);
     this.currentSavings = ko.observable(houseData[2].currentSavings);
@@ -28,7 +27,36 @@ function setData(cookieData) {
     this.netMonthly = ko.observable(houseData[6].netMonthly);
     this.serviceCharge = ko.observable(houseData[7].serviceCharge);
     this.rentPercentage = ko.observable(houseData[8].rentPercentage);
-    
+
+    this.movingCosts = 8000;
+
+    this.deposit = ko.computed(function(){
+      return  self.currentSavings() - self.movingCosts;
+    });
+    console.log(this.deposit())
+    this.shareValue = ko.computed(function(){
+      return (self.marketValue() / 100) * self.share()
+    });
+    console.log(this.shareValue());
+
+    this.amountBorrowing = ko.computed(function(){
+      return self.shareValue() - self.deposit();
+    });
+
+    this.monthlyRent = ko.computed(function(){
+      return ((self.marketValue() - self.shareValue()) * (self.rentPercentage()/100)) /12;
+    });
+    console.log(self.rentPercentage()/100);
+
+    this.monthlyMortgage = ko.computed(function(){
+      return 800;
+    });
+
+    this.totalMonthly = ko.computed(function(){
+      return 800 + self.monthlyRent() + parseInt(self.serviceCharge());
+    });
+
+    console.log(this.totalMonthly());
   }
   ko.applyBindings(new houseModel());
   

@@ -115,13 +115,13 @@
             <hr>
             <h3>RECURRING COST</h3>
             <div>Monthly cost:</div>
-            <div>Mortgage:</div>
-            <div>Service charge:</div>
-            <div>Rent:</div>
-            <div>Total:</div>
+            <div>Mortgage: <span id="serviceCharge-result" data-bind="text:monthlyMortgage()"></span> </div>
+            <div>Service charge:<span id="serviceCharge-result" data-bind="text:serviceCharge()"></span></div>
+            <div>Rent: <span id="rent-result" data-bind="text:monthlyRent()"></span></div>
+            <div>Total: <span id="total-result" data-bind="text:totalMonthly()"></span></div>
             <hr>
             <h3>OTHER STUFF</h3>
-            <div>Amount borrowing:</div>
+            <div>Amount borrowing: <span id="amount-results" data-bind="text:amountBorrowing()"></span></div>
             <div>Stamp duty to pay:</div>
 
 
