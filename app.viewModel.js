@@ -16,50 +16,27 @@ function readCookie(name) {
 
 function setData(cookieData) {
   var houseData = JSON.parse(cookieData);
+  console.log(houseData);
   function houseModel() {
-    var self = this;
-    //console.log(self);
-
-    var myhouse = self.house = ko.observableArray(houseData);
-    console.log(myhouse()[0].marketValue);
-
-    myhouse.subscribe(function(changes){
-      console.log(changes);
-    })
+    
+    this.marketValue = ko.observable(houseData[0].marketValue);
+    this.share = ko.observable(houseData[1].share);
+    this.currentSavings = ko.observable(houseData[2].currentSavings);
+    this.interestRate = ko.observable(houseData[3].interestRate);
+    this.repaymentTerm = ko.observable(houseData[4].repaymentTerm);
+    this.income = ko.observable(houseData[5].income);
+    this.netMonthly = ko.observable(houseData[6].netMonthly);
+    this.serviceCharge = ko.observable(houseData[7].serviceCharge);
+    this.rentPercentage = ko.observable(houseData[8].rentPercentage);
+    
   }
-
-
-  // var houseModel = function(houseData) {
-  //   var self = this;
-  //   self.houseData = ko.observableArray(ko.utils.arrayMap(houseData, function(house){
-  //     console.log(house);
-  //     return {
-  //       marketValue: house.marketValue,
-  //       share: house.share,
-  //       currentSavings: house.currentSavings,
-  //       interestRate: house.interestRate,
-  //       repaymentTerm: house.repaymentTerm,
-  //       income: house.income,
-  //       netMonthly: house.netMonthly,
-  //       serviceCharge: house.serviceCharge,
-  //       rentPercentage: house.rentPercentage
-  //     };
-
-  //   }));
-
-  // };
-
   ko.applyBindings(new houseModel());
   
 };
 
 var cookieData = readCookie('purchaseData')
 	if (cookieData) {
-
-
-	    setData(cookieData);
-
-	   
+	    setData(cookieData); 
 };
 
 var data = [];
