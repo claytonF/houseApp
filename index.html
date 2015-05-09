@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-    <title>Javascript objects</title> 
+    <title>HouseApp</title> 
      
      <!-- Latest compiled and minified CSS -->
       <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
@@ -31,7 +31,7 @@
                 <label for="marketValue">Full market value</label>
                 <div class="input-group">
                   <div class="input-group-addon">£</div>
-                  <input id="marketValue" data-bind="value:marketValue" type="number" min="100000" max="1000000" step="5000" class="form-control">
+                  <input id="marketValue" value=" " data-bind="textInput:marketValue" type="number" min="100000" max="1000000" step="5000" class="form-control">
                   <div class="input-group-addon clear"><span aria-hidden="true">&times;</span></div>
                 </div>
               </div>
@@ -39,7 +39,7 @@
                 <label for="share">Percentage purchasing</label>
                 <div class="input-group">
                   <div class="input-group-addon">%</div>
-                  <input id="share"  data-bind="value:share" type="number" min="25" max="75" step="5" class="form-control">
+                  <input id="share"  data-bind="textInput:share" type="number" min="25" max="75" step="5" class="form-control">
                   <div class="input-group-addon clear"><span aria-hidden="true">&times;</span></div>
                 </div>
               </div>
@@ -47,7 +47,7 @@
                 <label for="currentSavings">Total cash available for purchase</label>
                 <div class="input-group">
                   <div class="input-group-addon">£</div>
-                  <input id="currentSavings"  data-bind="value:currentSavings" type="number" min="1000" max="1000000" step="1000" class="form-control" >
+                  <input id="currentSavings"  data-bind="textInput:currentSavings" type="number" min="1000" max="1000000" step="1000" class="form-control" >
                   <div class="input-group-addon clear"><span aria-hidden="true">&times;</span></div>
                 </div>
               </div>
@@ -55,7 +55,7 @@
                 <label for="interestRate">Mortgage Interest rate</label>
                 <div class="input-group">
                   <div class="input-group-addon">%</div>          
-                  <input id="interestRate" data-bind="value:interestRate" type="number" min="1" max="10" step="0.5" class="form-control" >
+                  <input id="interestRate" data-bind="textInput:interestRate" type="number" min="1" max="10" step="0.5" class="form-control" >
                   <div class="input-group-addon clear"><span aria-hidden="true">&times;</span></div>
                 </div>
               </div>
@@ -63,7 +63,7 @@
                 <label for="repaymentTerm">Mortgage repayment term (years)</label>
                 <div class="input-group">
                   <div class="input-group-addon">yrs</div>          
-                  <input id="repaymentTerm" data-bind="value:repaymentTerm" type="number" min="25" max="30" step="1" class="form-control" >
+                  <input id="repaymentTerm" data-bind="textInput:repaymentTerm" type="number" min="25" max="30" step="1" class="form-control" >
                   <div class="input-group-addon clear"><span aria-hidden="true">&times;</span></div>
                 </div>
               </div>
@@ -71,7 +71,7 @@
                 <label for="income">Yearly income (total for joint applicants)</label>
                 <div class="input-group">
                   <div class="input-group-addon">£</div>
-                  <input id="income" data-bind="value:income" type="number" min="10000" max="80000" step="500" class="form-control">
+                  <input id="income" data-bind="textInput:income" type="number" min="10000" max="80000" step="500" class="form-control">
                   <div class="input-group-addon clear"><span aria-hidden="true">&times;</span></div>
                 </div>
               </div>
@@ -79,14 +79,15 @@
                 <label for="netMonthly">Net monthly income (total for joint applicants)</label>
                 <div class="input-group">
                   <div class="input-group-addon">£</div>
-                  <input id="netMonthly" data-bind="value:netMonthly" type="number" min="100" max="10000" step="1" class="form-control">
+                  <input id="netMonthly" data-bind="textInput:netMonthly" type="number" min="100" max="10000" step="1" class="form-control">
                   <div class="input-group-addon clear"><span aria-hidden="true">&times;</span></div>
                 </div>
-              </div>              <div class="form-group">
+              </div>              
+              <div class="form-group">
                 <label for="serviceCharge">Monthly service charge (apartments)</label>
                 <div class="input-group">
                   <div class="input-group-addon">£</div>
-                  <input id="serviceCharge" data-bind="value:serviceCharge" type="number" min="10" max="1000" step="1" class="form-control">
+                  <input id="serviceCharge" data-bind="textInput:serviceCharge" type="number" min="10" max="1000" step="1" class="form-control">
                   <div class="input-group-addon clear"><span aria-hidden="true">&times;</span></div>
                 </div>
               </div> 
@@ -94,7 +95,7 @@
                 <label for="rentPercentage">Rent percentage</label>
                 <div class="input-group">
                   <div class="input-group-addon">%</div>
-                  <input id="rentPercentage" data-bind="value:rentPercentage" type="number" min="0" max="5" step="0.1" class="form-control">
+                  <input id="rentPercentage" data-bind="textInput:rentPercentage" type="number" min="0" max="5" step="0.1" class="form-control">
                   <div class="input-group-addon clear"><span aria-hidden="true">&times;</span></div>
                 </div>
               </div>         <button class="btn btn-primary" id="formSubmit">Update</button>
@@ -114,15 +115,14 @@
             <div>Max deposit bracket:</div>
             <hr>
             <h3>RECURRING COST</h3>
-            <div>Monthly cost:</div>
             <div>Mortgage: <span id="serviceCharge-result" data-bind="text:monthlyMortgage()"></span> </div>
-            <div>Service charge:<span id="serviceCharge-result" data-bind="text:serviceCharge()"></span></div>
+            <div>Service charge: <span id="serviceCharge-result" data-bind="text:serviceCharge()"></span></div>
             <div>Rent: <span id="rent-result" data-bind="text:monthlyRent()"></span></div>
             <div>Total: <span id="total-result" data-bind="text:totalMonthly()"></span></div>
             <hr>
             <h3>OTHER STUFF</h3>
             <div>Amount borrowing: <span id="amount-results" data-bind="text:amountBorrowing()"></span></div>
-            <div>Stamp duty to pay:</div>
+            <div>Stamp duty to pay: <span id="amount-results" data-bind="text:stampDuty()"></span></div>
 
 
           </div>
