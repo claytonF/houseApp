@@ -1,6 +1,6 @@
 body {
 	padding:20px 0;
 }
-.clear {
+.clear, span[data-toggle="popover"] {
 	cursor: pointer;
 }

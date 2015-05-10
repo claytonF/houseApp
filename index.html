@@ -6,15 +6,15 @@
     <title>HouseApp</title> 
      
      <!-- Latest compiled and minified CSS -->
-      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+      <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
 
       <!-- Optional theme -->
-      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">
+      <!--<link rel="stylesheet" href="bootstrap/css/bootstrap-theme.min.css">-->
       <link rel="stylesheet" href="style.css">
       <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
 
       <!-- Latest compiled and minified JavaScript -->
-      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+      <script src="bootstrap/js/bootstrap.min.js"></script>
       <!--<script src="//cdnjs.cloudflare.com/ajax/libs/numeral.js/1.4.5/numeral.min.js"></script>-->
 
       <!-- knockout -->
@@ -22,48 +22,19 @@
       
   </head>
   <body>
+
     <div class="container-fluid" id="data">
       <div class="col-md-6">
         <div class="panel panel-default">
           <div class="panel-body">
             <form>
-              <div class="form-group">
-                <label for="marketValue">Full market value</label>
-                <div class="input-group">
-                  <div class="input-group-addon">£</div>
-                  <input id="marketValue" value=" " data-bind="textInput:marketValue" type="number" min="100000" max="1000000" step="5000" class="form-control">
-                  <div class="input-group-addon clear"><span aria-hidden="true">&times;</span></div>
-                </div>
-              </div>
-              <div class="form-group">
-                <label for="share">Percentage purchasing</label>
-                <div class="input-group">
-                  <div class="input-group-addon">%</div>
-                  <input id="share"  data-bind="textInput:share" type="number" min="25" max="75" step="5" class="form-control">
-                  <div class="input-group-addon clear"><span aria-hidden="true">&times;</span></div>
-                </div>
-              </div>
+              <h4><span class="glyphicon glyphicon-user"></span> About you</h4>
               <div class="form-group">
                 <label for="currentSavings">Total cash available for purchase</label>
+                <span data-toggle="popover" data-placement="bottom" data-container="body" data-content="This will have to cover stamp duty, moving costs, and deposit."><span class="glyphicon glyphicon-info-sign"></span></span>
                 <div class="input-group">
                   <div class="input-group-addon">£</div>
                   <input id="currentSavings"  data-bind="textInput:currentSavings" type="number" min="1000" max="1000000" step="1000" class="form-control" >
-                  <div class="input-group-addon clear"><span aria-hidden="true">&times;</span></div>
-                </div>
-              </div>
-              <div class="form-group">
-                <label for="interestRate">Mortgage Interest rate</label>
-                <div class="input-group">
-                  <div class="input-group-addon">%</div>          
-                  <input id="interestRate" data-bind="textInput:interestRate" type="number" min="1" max="10" step="0.5" class="form-control" >
-                  <div class="input-group-addon clear"><span aria-hidden="true">&times;</span></div>
-                </div>
-              </div>
-              <div class="form-group">
-                <label for="repaymentTerm">Mortgage repayment term (years)</label>
-                <div class="input-group">
-                  <div class="input-group-addon">yrs</div>          
-                  <input id="repaymentTerm" data-bind="textInput:repaymentTerm" type="number" min="25" max="30" step="1" class="form-control" >
                   <div class="input-group-addon clear"><span aria-hidden="true">&times;</span></div>
                 </div>
               </div>
@@ -84,6 +55,41 @@
                 </div>
               </div>              
               <div class="form-group">
+                <label for="movingCosts">Estimated moving costs </label>
+                <span data-toggle="popover" data-placement="top" data-container="body" data-content="This will include solicitors fees, various registry searches, mortgage broker, mortgage arrangement fee, moving costs, furniture. Basically estimate (generously) how much cash you will need to complete the move. We think £8000 is probably a good starting point, but it could be more!"><span class="glyphicon glyphicon-info-sign"></span></span>
+                <div class="input-group">
+                  <div class="input-group-addon">£</div>
+                  <input id="movingCosts"  data-bind="textInput:movingCosts" type="number" min="1000" max="10000" step="1000" class="form-control" >
+                  <div class="input-group-addon clear"><span aria-hidden="true">&times;</span></div>
+                </div>
+              </div>      
+              <div class="form-group">
+                <label for="repaymentTerm">Mortgage repayment term (years)</label>
+                <div class="input-group">
+                  <div class="input-group-addon">yrs</div>          
+                  <input id="repaymentTerm" data-bind="textInput:repaymentTerm" type="number" min="25" max="30" step="1" class="form-control" >
+                  <div class="input-group-addon clear"><span aria-hidden="true">&times;</span></div>
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="interestRate">Mortgage Interest rate</label>
+                <div class="input-group">
+                  <div class="input-group-addon">%</div>          
+                  <input id="interestRate" data-bind="textInput:interestRate" type="number" min="1" max="10" step="0.5" class="form-control" >
+                  <div class="input-group-addon clear"><span aria-hidden="true">&times;</span></div>
+                </div>
+              </div>
+              <hr>
+              <h4><span class="glyphicon glyphicon-home"></span> The property</h4>
+              <div class="form-group">
+                <label for="marketValue">Full market value</label>
+                <div class="input-group">
+                  <div class="input-group-addon">£</div>
+                  <input id="marketValue" value=" " data-bind="textInput:marketValue" type="number" min="100000" max="1000000" step="5000" class="form-control">
+                  <div class="input-group-addon clear"><span aria-hidden="true">&times;</span></div>
+                </div>
+              </div>
+              <div class="form-group">
                 <label for="serviceCharge">Monthly service charge (apartments)</label>
                 <div class="input-group">
                   <div class="input-group-addon">£</div>
@@ -92,13 +98,25 @@
                 </div>
               </div> 
               <div class="form-group">
-                <label for="rentPercentage">Rent percentage</label>
+                <label for="share">Percentage purchasing</label>
+                <span data-toggle="popover" data-placement="top" data-container="body" data-content="If buying on the open market, put 100, if buying through shared ownership put the percentage you want to purchase (will be between 25% and 75% when you first buy."><span class="glyphicon glyphicon-info-sign"></span></span>
+                <div class="input-group">
+                  <div class="input-group-addon">%</div>
+                  <input id="share"  data-bind="textInput:share" type="number" min="25" max="100" step="5" class="form-control">
+                  <div class="input-group-addon clear"><span aria-hidden="true">&times;</span></div>
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="rentPercentage">Rent percentage (shared ownership)</label>
+                <span data-toggle="popover" data-placement="top" data-container="body" data-content="This is usually stated on the price list that the housing association provide. It is usually something between one and three percent."><span class="glyphicon glyphicon-info-sign"></span></span>
                 <div class="input-group">
                   <div class="input-group-addon">%</div>
                   <input id="rentPercentage" data-bind="textInput:rentPercentage" type="number" min="0" max="5" step="0.1" class="form-control">
                   <div class="input-group-addon clear"><span aria-hidden="true">&times;</span></div>
                 </div>
-              </div>         <button class="btn btn-primary" id="formSubmit">Update</button>
+              </div>
+              <hr>         
+              <button class="btn btn-primary" id="formSubmit">Update</button>
               <button class="btn btn-default" id="formClear">Clear all data</button>
             </form>
           </div>
@@ -107,24 +125,72 @@
       <div class="col-md-6" id="results">
         <div class="panel panel-default">
           <div class="panel-body">
-            <h3>THE IMPORTANT STUFF</h3>
-            <div>Savings required: <span id="savings-result" data-bind="text:marketValue"></span></div>
-            <div>Multiple of income (salary) (don't want this to be more than 4.5x): <span id="savings-result"></span></div>
-            <div>% of net income (Don't want this to be more than 40-43%):</div>
-            <div>Amount left each month after house costs:</div>
-            <div>Max deposit bracket:</div>
+            <h4>The important stuff</h4>
+            <div data-bind="css:savingsEnough" class="alert">Minumum savings required: 
+              <span data-bind="visible: savingsRequired ">
+                <span>£</span><span id="savings-result" data-bind="text:savingsRequired"></span>
+                <span data-toggle="popover" data-placement="top" data-container="body" data-content=""><span class="glyphicon glyphicon-info-sign"></span></span>
+              </span>
+            </div>
+            <div data-bind="css:salaryEnough" class="alert">Multiple of income (salary): 
+              <span data-bind="visible: multipleOfSalary ">
+                <span id="savings-result" data-bind="text:multipleOfSalary"></span><span>x</span>
+                <span data-toggle="popover" data-placement="top" data-container="body" data-content="If this is more than 4x your total yearly salary, it can get more difficult to find a mortgage."><span class="glyphicon glyphicon-info-sign"></span></span>
+              </span>
+            </div>
+            <div data-bind="css:netIncomeEnough" class="alert">percentage of net income:
+              <span data-bind="visible: multipleOfNetIncome ">
+                <span data-bind="text:multipleOfNetIncome"></span><span>%</span> <span data-toggle="popover" data-placement="top" data-container="body" data-content="If this is more than 40-43% of your net montly income, you may find it more difficult to get a mortgage. This will show as red above 43%"><span class="glyphicon glyphicon-info-sign"></span></span>
+              </span>
+            </div>
+            <div data-bind="css:netIncomeEnough" class="alert">Amount left each month after house costs:
+              <span data-bind="visible: amountLeftMonthly ">
+                <span>£</span><span data-bind="text:amountLeftMonthly"></span>
+                <span data-toggle="popover" data-placement="top" data-container="body" data-content="This will show as red when the percentage of net income being used on housing costs is above 43% "><span class="glyphicon glyphicon-info-sign"></span></span>
+              </span>
+            </div>
+            <div data-bind="css:depositEnough" class="alert">deposit percentage:
+              <span data-bind="visible: depositBracket ">
+                <span id="savings-result" data-bind="text:depositBracket"></span><span>%</span>
+              </span>
+              
+              
+            </div>
             <hr>
-            <h3>RECURRING COST</h3>
-            <div>Mortgage: <span id="serviceCharge-result" data-bind="text:monthlyMortgage()"></span> </div>
-            <div>Service charge: <span id="serviceCharge-result" data-bind="text:serviceCharge()"></span></div>
-            <div>Rent: <span id="rent-result" data-bind="text:monthlyRent()"></span></div>
-            <div>Total: <span id="total-result" data-bind="text:totalMonthly()"></span></div>
+            <h4>Recurring costs</h4>
+            <div>Mortgage:
+              <span data-bind="visible:monthlyMortgage ">
+                <span>£</span><span id="serviceCharge-result" data-bind="text:monthlyMortgage"></span>
+              </span>
+            </div>
+            <div>Service charge: 
+              <span data-bind="visible:serviceCharge ">
+                <span>£</span><span id="serviceCharge-result" data-bind="text:serviceCharge"></span>
+              </span>
+            </div>
+            <div>Rent: 
+              <span data-bind="visible:monthlyRent ">
+                <span>£</span><span id="rent-result" data-bind="text:monthlyRent"></span>
+              </span>
+            </div>
+            <div><strong>Total:
+              <span data-bind="visible:totalMonthly ">
+                <span>£</span><span id="total-result" data-bind="text:totalMonthly"></span></strong>
+              </span>
+            </div>
+            
             <hr>
-            <h3>OTHER STUFF</h3>
-            <div>Amount borrowing: <span id="amount-results" data-bind="text:amountBorrowing()"></span></div>
-            <div>Stamp duty to pay: <span id="amount-results" data-bind="text:stampDuty()"></span></div>
-
-
+            <h4>Other stuff</h4>
+            <div>Amount borrowing:
+              <span data-bind="visible:amountBorrowing ">
+                <span>£</span><span id="amount-results" data-bind="text:amountBorrowing"></span>
+              </span>
+            </div>
+            <div>Stamp duty to pay:
+              <span data-bind="visible:stampDuty ">
+                <span>£</span><span id="amount-results" data-bind="text:stampDuty"></span>
+              </span>
+            </div>
           </div>
         </div>
 
