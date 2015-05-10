@@ -70,7 +70,7 @@ $(function () {
     else {
 
     this.marketValue = ko.observable();
-    this.share = ko.observable(0);
+    this.share = ko.observable();
     this.currentSavings = ko.observable();
     this.movingCosts = ko.observable();
     this.interestRate = ko.observable();
@@ -234,10 +234,18 @@ function createCookie(name,value,days) {
   document.cookie = name+"="+value+expires+"; path=/";
 };
 
+function deleteCookie(name) {
+  document.cookie = name + '=; expires=Thu, 01 Jan 1970 00:00:01 GMT;';
+}
+
 $("#formSubmit").on("click", function(e){
   //e.preventDefault();
   getData();
   createCookie('purchaseData',JSON.stringify(data),1000);
+});
+
+$("#formClear").on("click", function(){
+  deleteCookie('purchaseData');
 });
 
 $(".clear").on("click", function(){
