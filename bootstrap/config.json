@@ -6,12 +6,21 @@
     "@gray": "lighten(@gray-base, 33.5%)",
     "@gray-light": "lighten(@gray-base, 46.7%)",
     "@gray-lighter": "lighten(@gray-base, 93.5%)",
+<<<<<<< HEAD
     "@brand-primary": "darken(#428bca, 6.5%)",
     "@brand-success": "#5cb85c",
     "@brand-info": "#5bc0de",
     "@brand-warning": "#f0ad4e",
     "@brand-danger": "#d9534f",
     "@body-bg": "#fff",
+=======
+    "@brand-primary": "darken(#4a96ad, 6.5%)",
+    "@brand-success": "#95ad4a",
+    "@brand-info": "#4a96ad",
+    "@brand-warning": "#f0ad4e",
+    "@brand-danger": "#7d1935",
+    "@body-bg": "#7d1935",
+>>>>>>> ae8af6e3a12c6d61336605a84be97c0cf0a0ea8a
     "@text-color": "@gray-dark",
     "@link-color": "@brand-primary",
     "@link-hover-color": "darken(@link-color, 15%)",
@@ -48,9 +57,15 @@
     "@padding-xs-horizontal": "5px",
     "@line-height-large": "1.3333333",
     "@line-height-small": "1.5",
+<<<<<<< HEAD
     "@border-radius-base": "4px",
     "@border-radius-large": "6px",
     "@border-radius-small": "3px",
+=======
+    "@border-radius-base": "0px",
+    "@border-radius-large": "0px",
+    "@border-radius-small": "0px",
+>>>>>>> ae8af6e3a12c6d61336605a84be97c0cf0a0ea8a
     "@component-active-color": "#fff",
     "@component-active-bg": "@brand-primary",
     "@caret-width-base": "4px",
@@ -85,11 +100,19 @@
     "@input-bg": "#fff",
     "@input-bg-disabled": "@gray-lighter",
     "@input-color": "@gray",
+<<<<<<< HEAD
     "@input-border": "#ccc",
     "@input-border-radius": "@border-radius-base",
     "@input-border-radius-large": "@border-radius-large",
     "@input-border-radius-small": "@border-radius-small",
     "@input-border-focus": "#66afe9",
+=======
+    "@input-border": "#4a96ad",
+    "@input-border-radius": "@border-radius-base",
+    "@input-border-radius-large": "@border-radius-large",
+    "@input-border-radius-small": "@border-radius-small",
+    "@input-border-focus": "#58b2cd",
+>>>>>>> ae8af6e3a12c6d61336605a84be97c0cf0a0ea8a
     "@input-color-placeholder": "#999",
     "@input-height-base": "(@line-height-computed + (@padding-base-vertical * 2) + 2)",
     "@input-height-large": "(ceil(@font-size-large * @line-height-large) + (@padding-large-vertical * 2) + 2)",
@@ -97,8 +120,13 @@
     "@form-group-margin-bottom": "15px",
     "@legend-color": "@gray-dark",
     "@legend-border-color": "#e5e5e5",
+<<<<<<< HEAD
     "@input-group-addon-bg": "@gray-lighter",
     "@input-group-addon-border-color": "@input-border",
+=======
+    "@input-group-addon-bg": "#4a96ad",
+    "@input-group-addon-border-color": "#4a96ad",
+>>>>>>> ae8af6e3a12c6d61336605a84be97c0cf0a0ea8a
     "@cursor-disabled": "not-allowed",
     "@dropdown-bg": "#fff",
     "@dropdown-border": "rgba(0,0,0,.15)",
@@ -231,10 +259,17 @@
     "@tooltip-opacity": ".9",
     "@tooltip-arrow-width": "5px",
     "@tooltip-arrow-color": "@tooltip-bg",
+<<<<<<< HEAD
     "@popover-bg": "#fff",
     "@popover-max-width": "276px",
     "@popover-border-color": "rgba(0,0,0,.2)",
     "@popover-fallback-border-color": "#ccc",
+=======
+    "@popover-bg": "#4a96ad",
+    "@popover-max-width": "276px",
+    "@popover-border-color": "rgba(0,0,0,.2)",
+    "@popover-fallback-border-color": "#356a7a",
+>>>>>>> ae8af6e3a12c6d61336605a84be97c0cf0a0ea8a
     "@popover-title-bg": "darken(@popover-bg, 3%)",
     "@popover-arrow-width": "10px",
     "@popover-arrow-color": "@popover-bg",
@@ -305,6 +340,7 @@
     "@panel-footer-padding": "@panel-heading-padding",
     "@panel-border-radius": "@border-radius-base",
     "@panel-inner-border": "#ddd",
+<<<<<<< HEAD
     "@panel-footer-bg": "#f5f5f5",
     "@panel-default-text": "@gray-dark",
     "@panel-default-border": "#ddd",
@@ -312,6 +348,15 @@
     "@panel-primary-text": "#fff",
     "@panel-primary-border": "@brand-primary",
     "@panel-primary-heading-bg": "@brand-primary",
+=======
+    "@panel-footer-bg": "#4a96ad",
+    "@panel-default-text": "@gray-dark",
+    "@panel-default-border": "#356a7a",
+    "@panel-default-heading-bg": "#4a96ad",
+    "@panel-primary-text": "#fff",
+    "@panel-primary-border": "#356a7a",
+    "@panel-primary-heading-bg": "#4a96ad",
+>>>>>>> ae8af6e3a12c6d61336605a84be97c0cf0a0ea8a
     "@panel-success-text": "@state-success-text",
     "@panel-success-border": "@state-success-border",
     "@panel-success-heading-bg": "@state-success-bg",
@@ -330,7 +375,11 @@
     "@thumbnail-border-radius": "@border-radius-base",
     "@thumbnail-caption-color": "@text-color",
     "@thumbnail-caption-padding": "9px",
+<<<<<<< HEAD
     "@well-bg": "#f5f5f5",
+=======
+    "@well-bg": "#f6f3ee",
+>>>>>>> ae8af6e3a12c6d61336605a84be97c0cf0a0ea8a
     "@well-border": "darken(@well-bg, 7%)",
     "@badge-color": "#fff",
     "@badge-link-hover-color": "#fff",
@@ -426,5 +475,9 @@
     "scrollspy.js",
     "transition.js"
   ],
+<<<<<<< HEAD
   "customizerUrl": "http://getbootstrap.com/customize/?id=18dd9c919c1a24bb5c01"
+=======
+  "customizerUrl": "http://getbootstrap.com/customize/?id=c6d9ab8279d8fc257008"
+>>>>>>> ae8af6e3a12c6d61336605a84be97c0cf0a0ea8a
 }
