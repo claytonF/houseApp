@@ -5,8 +5,8 @@
  */
 
 /*!
- * Generated using the Bootstrap Customizer (http://getbootstrap.com/customize/?id=f1b2fe963abb85f9219a)
- * Config saved to config.json and https://gist.github.com/f1b2fe963abb85f9219a
+ * Generated using the Bootstrap Customizer (http://getbootstrap.com/customize/?id=c6d9ab8279d8fc257008)
+ * Config saved to config.json and https://gist.github.com/c6d9ab8279d8fc257008
  */
 /*! normalize.css v3.0.2 | MIT License | git.io/normalize */
 html {
@@ -5339,7 +5339,7 @@ a.list-group-item-danger.active:focus {
 }
 .panel-footer {
   padding: 10px 15px;
-  background-color: #f5f5f5;
+  background-color: #4a96ad;
   border-top: 1px solid #dddddd;
   border-bottom-right-radius: -1px;
   border-bottom-left-radius: -1px;
@@ -5536,40 +5536,40 @@ a.list-group-item-danger.active:focus {
   border-bottom: 1px solid #dddddd;
 }
 .panel-default {
-  border-color: #4a0f20;
+  border-color: #356a7a;
 }
 .panel-default > .panel-heading {
   color: #333333;
-  background-color: #f5f5f5;
-  border-color: #4a0f20;
+  background-color: #4a96ad;
+  border-color: #356a7a;
 }
 .panel-default > .panel-heading + .panel-collapse > .panel-body {
-  border-top-color: #4a0f20;
+  border-top-color: #356a7a;
 }
 .panel-default > .panel-heading .badge {
-  color: #f5f5f5;
+  color: #4a96ad;
   background-color: #333333;
 }
 .panel-default > .panel-footer + .panel-collapse > .panel-body {
-  border-bottom-color: #4a0f20;
+  border-bottom-color: #356a7a;
 }
 .panel-primary {
-  border-color: #408296;
+  border-color: #356a7a;
 }
 .panel-primary > .panel-heading {
   color: #ffffff;
-  background-color: #408296;
-  border-color: #408296;
+  background-color: #4a96ad;
+  border-color: #356a7a;
 }
 .panel-primary > .panel-heading + .panel-collapse > .panel-body {
-  border-top-color: #408296;
+  border-top-color: #356a7a;
 }
 .panel-primary > .panel-heading .badge {
-  color: #408296;
+  color: #4a96ad;
   background-color: #ffffff;
 }
 .panel-primary > .panel-footer + .panel-collapse > .panel-body {
-  border-bottom-color: #408296;
+  border-bottom-color: #356a7a;
 }
 .panel-success {
   border-color: #d6e9c6;
