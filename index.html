@@ -85,7 +85,7 @@
                 <label for="marketValue">Full market value</label>
                 <div class="input-group">
                   <div class="input-group-addon">£</div>
-                  <input id="marketValue" value=" " data-bind="textInput:marketValue" type="number" min="100000" max="1000000" step="5000" class="form-control">
+                  <input id="marketValue" data-bind="textInput:marketValue" type="number" min="100000" max="1000000" step="5000" class="form-control">
                   <div class="input-group-addon clear"><span aria-hidden="true">&times;</span></div>
                 </div>
               </div>
@@ -128,13 +128,13 @@
             <h4>The important stuff</h4>
             <div data-bind="css:savingsEnough" class="alert">Minumum savings required: 
               <span data-bind="visible: savingsRequired ">
-                <span>£</span><span id="savings-result" data-bind="text:savingsRequired"></span>
+                <span>£</span><span data-bind="text:savingsRequired"></span>
                 <span data-toggle="popover" data-placement="top" data-container="body" data-content=""><span class="glyphicon glyphicon-info-sign"></span></span>
               </span>
             </div>
             <div data-bind="css:salaryEnough" class="alert">Multiple of income (salary): 
               <span data-bind="visible: multipleOfSalary ">
-                <span id="savings-result" data-bind="text:multipleOfSalary"></span><span>x</span>
+                <span data-bind="text:multipleOfSalary"></span><span>x</span>
                 <span data-toggle="popover" data-placement="top" data-container="body" data-content="If this is more than 4x your total yearly salary, it can get more difficult to find a mortgage."><span class="glyphicon glyphicon-info-sign"></span></span>
               </span>
             </div>
@@ -151,7 +151,7 @@
             </div>
             <div data-bind="css:depositEnough" class="alert">deposit percentage:
               <span data-bind="visible: depositBracket ">
-                <span id="savings-result" data-bind="text:depositBracket"></span><span>%</span>
+                <span data-bind="text:depositBracket"></span><span>%</span>
               </span>
               
               
@@ -160,35 +160,35 @@
             <h4>Recurring costs</h4>
             <div>Mortgage:
               <span data-bind="visible:monthlyMortgage ">
-                <span>£</span><span id="serviceCharge-result" data-bind="text:monthlyMortgage"></span>
+                <span>£</span><span data-bind="text:monthlyMortgage"></span>
               </span>
             </div>
             <div>Service charge: 
               <span data-bind="visible:serviceCharge ">
-                <span>£</span><span id="serviceCharge-result" data-bind="text:serviceCharge"></span>
+                <span>£</span><span data-bind="text:serviceCharge"></span>
               </span>
             </div>
             <div>Rent: 
               <span data-bind="visible:monthlyRent ">
-                <span>£</span><span id="rent-result" data-bind="text:monthlyRent"></span>
+                <span>£</span><span data-bind="text:monthlyRent"></span>
               </span>
             </div>
             <div><strong>Total:
               <span data-bind="visible:totalMonthly ">
-                <span>£</span><span id="total-result" data-bind="text:totalMonthly"></span></strong>
-              </span>
+                <span>£</span><span data-bind="text:totalMonthly"></span>
+              </span></strong>
             </div>
             
             <hr>
             <h4>Other stuff</h4>
             <div>Amount borrowing:
               <span data-bind="visible:amountBorrowing ">
-                <span>£</span><span id="amount-results" data-bind="text:amountBorrowing"></span>
+                <span>£</span><span data-bind="text:amountBorrowing"></span>
               </span>
             </div>
             <div>Stamp duty to pay:
               <span data-bind="visible:stampDuty ">
-                <span>£</span><span id="amount-results" data-bind="text:stampDuty"></span>
+                <span>£</span><span data-bind="text:stampDuty"></span>
               </span>
             </div>
           </div>
