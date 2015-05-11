@@ -5,3 +5,24 @@ body {
 	cursor: pointer;
 }
 .popover-content, .input-group-addon, .panel-heading {color:#fff!important;}
+
+.panel {
+	border:0px;
+}
+#details-tabs li {
+	background-color:#418699;
+	border-bottom: 1px solid #fff;
+	color: #fff;
+}
+#details-tabs li {
+
+}
+#details-tabs li a {
+	color: #fff;
+}
+#details-tabs li a:hover {
+	background-color:#3f8193;
+}
+.alert {
+	margin-bottom: 0px !important;
+}

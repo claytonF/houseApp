@@ -24,106 +24,124 @@
   <body>
 
     <div class="container" id="data">
-      <div class="col-md-12"></div>
 
       <div class="col-md-6">
-        <div class="panel panel-default">
-          <div class="panel-heading"><h4><span class="glyphicon glyphicon-user"></span> About you</h4></div>
-          <div class="panel-body">
-            <form>
-              
-              <div class="form-group">
-                <label for="currentSavings">Total cash available for purchase</label>
-                <span data-toggle="popover" data-placement="bottom" data-container="body" data-content="This will have to cover stamp duty, moving costs, and deposit."><span class="glyphicon glyphicon-info-sign"></span></span>
-                <div class="input-group">
-                  <div class="input-group-addon">£</div>
-                  <input id="currentSavings"  data-bind="textInput:currentSavings" type="number" min="1000" max="1000000" step="1000" class="form-control" >
-                  <div class="input-group-addon clear"><span aria-hidden="true">&times;</span></div>
+        <div role="tab-panel">
+          <ul class="nav nav-tabs" role="tablist" id="details-tabs">
+            <li role="presentation" class="active"><a href="#aboutYou" aria-controls="home" role="tab" data-toggle="tab"><span class="glyphicon glyphicon-user"></span> About you</a></li>
+            <li role="presentation"><a href="#propertyDetails" aria-controls="home" role="tab" data-toggle="tab"><span class="glyphicon glyphicon-home"></span> The property</a></li>
+          </ul>
+          <div class="tab-content">
+            
+              <div role="tabpanel" class="tab-pane active" id="aboutYou">
+                <form>
+                <div class="panel panel-default">
+                  <div class="panel-body">
+                    <div class="form-group">
+                      <label for="currentSavings">Total cash available for purchase</label>
+                      <span data-toggle="popover" data-placement="bottom" data-container="body" data-content="This will have to cover stamp duty, moving costs, and deposit."><span class="glyphicon glyphicon-info-sign"></span></span>
+                      <div class="input-group">
+                        <div class="input-group-addon">£</div>
+                        <input id="currentSavings"  data-bind="textInput:currentSavings" type="number" min="1000" max="1000000" step="1000" class="form-control" >
+                        <div class="input-group-addon clear"><span aria-hidden="true">&times;</span></div>
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label for="income">Yearly income (total for joint applicants)</label>
+                      <div class="input-group">
+                        <div class="input-group-addon">£</div>
+                        <input id="income" data-bind="textInput:income" type="number" min="10000" max="80000" step="500" class="form-control">
+                        <div class="input-group-addon clear"><span aria-hidden="true">&times;</span></div>
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label for="netMonthly">Net monthly income (total for joint applicants)</label>
+                      <div class="input-group">
+                        <div class="input-group-addon">£</div>
+                        <input id="netMonthly" data-bind="textInput:netMonthly" type="number" min="100" max="10000" step="1" class="form-control">
+                        <div class="input-group-addon clear"><span aria-hidden="true">&times;</span></div>
+                      </div>
+                    </div>              
+                    <div class="form-group">
+                      <label for="movingCosts">Estimated moving costs </label>
+                      <span data-toggle="popover" data-placement="top" data-container="body" data-content="This will include solicitors fees, various registry searches, mortgage broker, mortgage arrangement fee, moving costs, furniture. Basically estimate (generously) how much cash you will need to complete the move. We think £8000 is probably a good starting point, but it could be more!"><span class="glyphicon glyphicon-info-sign"></span></span>
+                      <div class="input-group">
+                        <div class="input-group-addon">£</div>
+                        <input id="movingCosts"  data-bind="textInput:movingCosts" type="number" min="1000" max="10000" step="1000" class="form-control" >
+                        <div class="input-group-addon clear"><span aria-hidden="true">&times;</span></div>
+                      </div>
+                    </div>      
+                    <div class="form-group">
+                      <label for="repaymentTerm">Mortgage repayment term (years)</label>
+                      <div class="input-group">
+                        <div class="input-group-addon">yrs</div>          
+                        <input id="repaymentTerm" data-bind="textInput:repaymentTerm" type="number" min="25" max="30" step="1" class="form-control" >
+                        <div class="input-group-addon clear"><span aria-hidden="true">&times;</span></div>
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label for="interestRate">Mortgage Interest rate</label>
+                      <div class="input-group">
+                        <div class="input-group-addon">%</div>          
+                        <input id="interestRate" data-bind="textInput:interestRate" type="number" min="1" max="10" step="0.5" class="form-control" >
+                        <div class="input-group-addon clear"><span aria-hidden="true">&times;</span></div>
+                      </div>
+                    </div>       
+                      <button class="btn btn-primary formSubmit" >Update</button>
+                      <button class="btn btn-default formClear">Clear all data</button>                    
+                  </div>
                 </div>
+              </form>
               </div>
-              <div class="form-group">
-                <label for="income">Yearly income (total for joint applicants)</label>
-                <div class="input-group">
-                  <div class="input-group-addon">£</div>
-                  <input id="income" data-bind="textInput:income" type="number" min="10000" max="80000" step="500" class="form-control">
-                  <div class="input-group-addon clear"><span aria-hidden="true">&times;</span></div>
+              <div role="tabpanel" class="tab-pane" id="propertyDetails">
+                <form>
+                <div class="panel panel-default">
+                  <div class="panel-body">
+                      <div class="form-group">
+                        <label for="marketValue">Full market value</label>
+                        <div class="input-group">
+                          <div class="input-group-addon">£</div>
+                          <input id="marketValue" data-bind="textInput:marketValue" type="number" min="100000" max="1000000" step="5000" class="form-control">
+                          <div class="input-group-addon clear"><span aria-hidden="true">&times;</span></div>
+                        </div>
+                      </div>
+                      <div class="form-group">
+                        <label for="serviceCharge">Monthly service charge (apartments)</label>
+                        <div class="input-group">
+                          <div class="input-group-addon">£</div>
+                          <input id="serviceCharge" data-bind="textInput:serviceCharge" type="number" min="10" max="1000" step="1" class="form-control">
+                          <div class="input-group-addon clear"><span aria-hidden="true">&times;</span></div>
+                        </div>
+                      </div> 
+                      <div class="form-group">
+                        <label for="share">Percentage purchasing</label>
+                        <span data-toggle="popover" data-placement="top" data-container="body" data-content="If buying on the open market, put 100, if buying through shared ownership put the percentage you want to purchase (will be between 25% and 75% when you first buy."><span class="glyphicon glyphicon-info-sign"></span></span>
+                        <div class="input-group">
+                          <div class="input-group-addon">%</div>
+                          <input id="share"  data-bind="textInput:share" type="number" min="25" max="100" step="5" class="form-control">
+                          <div class="input-group-addon clear"><span aria-hidden="true">&times;</span></div>
+                        </div>
+                      </div>
+                      <div class="form-group">
+                        <label for="rentPercentage">Rent percentage (shared ownership)</label>
+                        <span data-toggle="popover" data-placement="top" data-container="body" data-content="This is usually stated on the price list that the housing association provide. It is usually something between one and three percent."><span class="glyphicon glyphicon-info-sign"></span></span>
+                        <div class="input-group">
+                          <div class="input-group-addon">%</div>
+                          <input id="rentPercentage" data-bind="textInput:rentPercentage" type="number" min="0" max="5" step="0.1" class="form-control">
+                          <div class="input-group-addon clear"><span aria-hidden="true">&times;</span></div>
+                        </div>
+                      </div>
+                      <button class="btn btn-primary formSubmit" >Update</button>
+                      <button class="btn btn-default formClear">Clear all data</button>
+                    </div>
+                  </div>
+                </form>
                 </div>
-              </div>
-              <div class="form-group">
-                <label for="netMonthly">Net monthly income (total for joint applicants)</label>
-                <div class="input-group">
-                  <div class="input-group-addon">£</div>
-                  <input id="netMonthly" data-bind="textInput:netMonthly" type="number" min="100" max="10000" step="1" class="form-control">
-                  <div class="input-group-addon clear"><span aria-hidden="true">&times;</span></div>
-                </div>
-              </div>              
-              <div class="form-group">
-                <label for="movingCosts">Estimated moving costs </label>
-                <span data-toggle="popover" data-placement="top" data-container="body" data-content="This will include solicitors fees, various registry searches, mortgage broker, mortgage arrangement fee, moving costs, furniture. Basically estimate (generously) how much cash you will need to complete the move. We think £8000 is probably a good starting point, but it could be more!"><span class="glyphicon glyphicon-info-sign"></span></span>
-                <div class="input-group">
-                  <div class="input-group-addon">£</div>
-                  <input id="movingCosts"  data-bind="textInput:movingCosts" type="number" min="1000" max="10000" step="1000" class="form-control" >
-                  <div class="input-group-addon clear"><span aria-hidden="true">&times;</span></div>
-                </div>
-              </div>      
-              <div class="form-group">
-                <label for="repaymentTerm">Mortgage repayment term (years)</label>
-                <div class="input-group">
-                  <div class="input-group-addon">yrs</div>          
-                  <input id="repaymentTerm" data-bind="textInput:repaymentTerm" type="number" min="25" max="30" step="1" class="form-control" >
-                  <div class="input-group-addon clear"><span aria-hidden="true">&times;</span></div>
-                </div>
-              </div>
-              <div class="form-group">
-                <label for="interestRate">Mortgage Interest rate</label>
-                <div class="input-group">
-                  <div class="input-group-addon">%</div>          
-                  <input id="interestRate" data-bind="textInput:interestRate" type="number" min="1" max="10" step="0.5" class="form-control" >
-                  <div class="input-group-addon clear"><span aria-hidden="true">&times;</span></div>
-                </div>
-              </div>
-              <hr>
-              <h4><span class="glyphicon glyphicon-home"></span> The property</h4>
-              <div class="form-group">
-                <label for="marketValue">Full market value</label>
-                <div class="input-group">
-                  <div class="input-group-addon">£</div>
-                  <input id="marketValue" data-bind="textInput:marketValue" type="number" min="100000" max="1000000" step="5000" class="form-control">
-                  <div class="input-group-addon clear"><span aria-hidden="true">&times;</span></div>
-                </div>
-              </div>
-              <div class="form-group">
-                <label for="serviceCharge">Monthly service charge (apartments)</label>
-                <div class="input-group">
-                  <div class="input-group-addon">£</div>
-                  <input id="serviceCharge" data-bind="textInput:serviceCharge" type="number" min="10" max="1000" step="1" class="form-control">
-                  <div class="input-group-addon clear"><span aria-hidden="true">&times;</span></div>
-                </div>
-              </div> 
-              <div class="form-group">
-                <label for="share">Percentage purchasing</label>
-                <span data-toggle="popover" data-placement="top" data-container="body" data-content="If buying on the open market, put 100, if buying through shared ownership put the percentage you want to purchase (will be between 25% and 75% when you first buy."><span class="glyphicon glyphicon-info-sign"></span></span>
-                <div class="input-group">
-                  <div class="input-group-addon">%</div>
-                  <input id="share"  data-bind="textInput:share" type="number" min="25" max="100" step="5" class="form-control">
-                  <div class="input-group-addon clear"><span aria-hidden="true">&times;</span></div>
-                </div>
-              </div>
-              <div class="form-group">
-                <label for="rentPercentage">Rent percentage (shared ownership)</label>
-                <span data-toggle="popover" data-placement="top" data-container="body" data-content="This is usually stated on the price list that the housing association provide. It is usually something between one and three percent."><span class="glyphicon glyphicon-info-sign"></span></span>
-                <div class="input-group">
-                  <div class="input-group-addon">%</div>
-                  <input id="rentPercentage" data-bind="textInput:rentPercentage" type="number" min="0" max="5" step="0.1" class="form-control">
-                  <div class="input-group-addon clear"><span aria-hidden="true">&times;</span></div>
-                </div>
-              </div>
-              <hr>         
-              <button class="btn btn-primary" id="formSubmit">Update</button>
-              <button class="btn btn-default" id="formClear">Clear all data</button>
-            </form>
+
           </div>
+
         </div>
+
       </div>
       <div class="col-md-6" id="results">
         <div class="panel panel-default">

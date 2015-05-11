@@ -23,6 +23,11 @@ $(document).on("ready", function(){
 
 $(function () {
   $('[data-toggle="popover"]').popover()
+});
+
+$('#details-tabs a').click(function (e) {
+  e.preventDefault()
+  $(this).tab('show')
 })
 
   function houseModel() {
@@ -237,13 +242,13 @@ function deleteCookie(name) {
   document.cookie = name + '=; expires=Thu, 01 Jan 1970 00:00:01 GMT;';
 }
 
-$("#formSubmit").on("click", function(e){
+$(".formSubmit").on("click", function(e){
   //e.preventDefault();
   getData();
   createCookie('purchaseData',JSON.stringify(data),1000);
 });
 
-$("#formClear").on("click", function(){
+$(".formClear").on("click", function(){
   deleteCookie('purchaseData');
 });
 
