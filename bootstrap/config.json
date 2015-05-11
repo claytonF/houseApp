@@ -231,10 +231,10 @@
     "@tooltip-opacity": ".9",
     "@tooltip-arrow-width": "5px",
     "@tooltip-arrow-color": "@tooltip-bg",
-    "@popover-bg": "#fff",
+    "@popover-bg": "#4a96ad",
     "@popover-max-width": "276px",
     "@popover-border-color": "rgba(0,0,0,.2)",
-    "@popover-fallback-border-color": "#ccc",
+    "@popover-fallback-border-color": "#356a7a",
     "@popover-title-bg": "darken(@popover-bg, 3%)",
     "@popover-arrow-width": "10px",
     "@popover-arrow-color": "@popover-bg",
@@ -426,5 +426,5 @@
     "scrollspy.js",
     "transition.js"
   ],
-  "customizerUrl": "http://getbootstrap.com/customize/?id=c1d41e9689655b65ab6f"
+  "customizerUrl": "http://getbootstrap.com/customize/?id=a4f405e39589af8bd2d8"
 }

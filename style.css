@@ -4,3 +4,4 @@ body {
 .clear, span[data-toggle="popover"] {
 	cursor: pointer;
 }
+.popover-content {color:#fff;}
