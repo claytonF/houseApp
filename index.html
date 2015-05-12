@@ -148,35 +148,35 @@
 					<div class="panel-heading"><h4>Results</h4></div>	
           <div class="panel-body">
             <h4>The important stuff</h4>
-            <div data-bind="css:savingsEnough" class="alert">Minumum savings required: 
-              <span data-bind="visible: savingsRequired ">
-                <span>£</span><span data-bind="text:savingsRequired"></span>
-                <span data-toggle="popover" data-placement="top" data-container="body" data-content=""><span class="glyphicon glyphicon-info-sign"></span></span>
-              </span>
-            </div>
-            <div data-bind="css:salaryEnough" class="alert">Multiple of income (salary): 
-              <span data-bind="visible: multipleOfSalary ">
-                <span data-bind="text:multipleOfSalary"></span><span>x</span>
-                <span data-toggle="popover" data-placement="top" data-container="body" data-content="If this is more than 4x your total yearly salary, it can get more difficult to find a mortgage."><span class="glyphicon glyphicon-info-sign"></span></span>
-              </span>
-            </div>
-            <div data-bind="css:netIncomeEnough" class="alert">percentage of net income:
-              <span data-bind="visible: multipleOfNetIncome ">
-                <span data-bind="text:multipleOfNetIncome"></span><span>%</span> <span data-toggle="popover" data-placement="top" data-container="body" data-content="If this is more than 40-43% of your net montly income, you may find it more difficult to get a mortgage. This will show as red above 43%"><span class="glyphicon glyphicon-info-sign"></span></span>
-              </span>
-            </div>
-            <div data-bind="css:netIncomeEnough" class="alert">Amount left each month after house costs:
-              <span data-bind="visible: amountLeftMonthly ">
-                <span>£</span><span data-bind="text:amountLeftMonthly"></span>
-                <span data-toggle="popover" data-placement="top" data-container="body" data-content="This will show as red when the percentage of net income being used on housing costs is above 43% "><span class="glyphicon glyphicon-info-sign"></span></span>
-              </span>
-            </div>
-            <div data-bind="css:depositEnough" class="alert">deposit percentage:
-              <span data-bind="visible: depositBracket ">
-                <span data-bind="text:depositBracket"></span><span>%</span>
-              </span>
-              
-              
+            <div class="results-container">
+              <div data-bind="css:savingsEnough" class="alert">Minumum savings required: 
+                <span data-bind="visible: savingsRequired ">
+                  <span>£</span><span data-bind="text:savingsRequired"></span>
+                  <span data-toggle="popover" data-placement="top" data-container="body" data-content=""><span class="glyphicon glyphicon-info-sign"></span></span>
+                </span>
+              </div>
+              <div data-bind="css:salaryEnough" class="alert">Multiple of income (salary): 
+                <span data-bind="visible: multipleOfSalary ">
+                  <span data-bind="text:multipleOfSalary"></span><span>x</span>
+                  <span data-toggle="popover" data-placement="top" data-container="body" data-content="If this is more than 4x your total yearly salary, it can get more difficult to find a mortgage."><span class="glyphicon glyphicon-info-sign"></span></span>
+                </span>
+              </div>
+              <div data-bind="css:netIncomeEnough" class="alert">percentage of net income:
+                <span data-bind="visible: multipleOfNetIncome ">
+                  <span data-bind="text:multipleOfNetIncome"></span><span>%</span> <span data-toggle="popover" data-placement="top" data-container="body" data-content="If this is more than 40-43% of your net montly income, you may find it more difficult to get a mortgage. This will show as red above 43%"><span class="glyphicon glyphicon-info-sign"></span></span>
+                </span>
+              </div>
+              <div data-bind="css:netIncomeEnough" class="alert">Amount left each month after house costs:
+                <span data-bind="visible: amountLeftMonthly ">
+                  <span>£</span><span data-bind="text:amountLeftMonthly"></span>
+                  <span data-toggle="popover" data-placement="top" data-container="body" data-content="This will show as red when the percentage of net income being used on housing costs is above 43% "><span class="glyphicon glyphicon-info-sign"></span></span>
+                </span>
+              </div>
+              <div data-bind="css:depositEnough" class="alert">deposit percentage:
+                <span data-bind="visible: depositBracket ">
+                  <span data-bind="text:depositBracket"></span><span>%</span>
+                </span>
+              </div>
             </div>
             <hr>
             <h4>Recurring costs</h4>

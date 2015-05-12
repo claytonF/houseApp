@@ -23,8 +23,12 @@ body {
 #details-tabs li a:hover {
 	background-color:#3f8193;
 }
+.results-container {
+	border:1px solid #ddd;
+}
 .alert {
 	margin-bottom: 0px !important;
+	border:0px !important;
 }
 .nav-tabs .active a{
 	background-color:#fff!important;
