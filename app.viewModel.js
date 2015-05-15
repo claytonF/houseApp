@@ -54,8 +54,9 @@ $('#details-tabs a').click(function (e) {
       this.movingCosts = ko.observable(parseInt(houseObject.movingCosts));
       this.interestRate = ko.observable(parseFloat(houseObject.interestRate));
       this.repaymentTerm = ko.observable(parseInt(houseObject.repaymentTerm));
-      this.income = ko.observable(parseInt(houseObject.income));
-      this.netMonthly = ko.observable(parseInt(houseObject.netMonthly));
+      this.income1 = ko.observable(houseObject.income1);
+      this.income2 = ko.observable(houseObject.income2);
+      //this.netMonthly = ko.observable(parseInt(houseObject.netMonthly));
       this.serviceCharge = ko.observable(parseInt(houseObject.serviceCharge));
       this.rentPercentage = ko.observable(parseFloat(houseObject.rentPercentage));    
 
@@ -79,8 +80,9 @@ $('#details-tabs a').click(function (e) {
     this.movingCosts = ko.observable();
     this.interestRate = ko.observable();
     this.repaymentTerm = ko.observable();
-    this.income = ko.observable();
-    this.netMonthly = ko.observable();
+    this.income1 = ko.observable();
+    this.income2 = ko.observable();
+    //this.netMonthly = ko.observable();
     this.serviceCharge = ko.observable();
     this.rentPercentage = ko.observable();
 
@@ -138,8 +140,6 @@ $('#details-tabs a').click(function (e) {
       }
     });
 
-    console.log(this.deposit());
-
     this.amountBorrowing = ko.computed(function(){
       return self.shareValue() - self.deposit();
     });
@@ -196,15 +196,39 @@ $('#details-tabs a').click(function (e) {
     
 
     this.multipleOfSalary = ko.computed(function(){
-      return parseFloat((self.amountBorrowing() / self.income()).toFixed(1));
+      return parseFloat((self.amountBorrowing() / (self.income1() + self.income2)).toFixed(1));
     });
     this.salaryEnough = ko.computed(function(){
       return self.multipleOfSalary() > 4 ? "alert-danger" : "alert-success";
     });
+
+    this.netMonthly = ko.computed(function(){
+      console.log(typeof(ko.utils.unwrapObservable(self.income2())));
+      this.ni = ko.computed(function(){
+        var monthlyGross1 = parseInt(self.income1()) / 12;
+        //var monthlyGross2 = 0;
+        //if (self.income2() > 0){ monthlyGross2 = parseInt(self.income2())};
+        var pt = 672; //primary threshold
+        var uel = 3532 // upper earnings limit
+        var rate1 = 0.12;
+        var rate2 = 0.02;
+
+        //return monthlyGross1 + monthlyGross2;
+
+
+      });
+      console.log(self.income2());
+    });
+
+
     this.multipleOfNetIncome = ko.computed(function(){
       return parseFloat((self.totalMonthly() / self.netMonthly() * 100).toFixed(1));
     });
+
+
+
     this.netIncomeEnough = ko.computed(function(){
+
       return self.multipleOfNetIncome() > 43 ? "alert-danger" : "alert-success";
     });
     this.amountLeftMonthly = ko.computed(function(){
