@@ -15,10 +15,6 @@ function readCookie(name) {
 };
 
 
-
-
-
-
 $(document).on("ready", function(){
 
 $(function () {
@@ -55,7 +51,9 @@ $('#details-tabs a').click(function (e) {
       this.interestRate = ko.observable(parseFloat(houseObject.interestRate));
       this.repaymentTerm = ko.observable(parseInt(houseObject.repaymentTerm));
       this.income1 = ko.observable(houseObject.income1);
+      this.selfEmployed1 = ko.observable(houseObject.selfEmployed1);
       this.income2 = ko.observable(houseObject.income2);
+      this.selfEmployed2 = ko.observable(houseObject.selfEmployed2);
       //this.netMonthly = ko.observable(parseInt(houseObject.netMonthly));
       this.serviceCharge = ko.observable(parseInt(houseObject.serviceCharge));
       this.rentPercentage = ko.observable(parseFloat(houseObject.rentPercentage));    
@@ -65,26 +63,24 @@ $('#details-tabs a').click(function (e) {
         for (var key in houseData[e]) {
           var value = houseData[e];
           value = value[key];
-
-          if($(this).attr("id") == key) {
-            $(this).val("10000");
-          };
         };
       });
     }
     else {
 
-    this.marketValue = ko.observable();
-    this.share = ko.observable();
-    this.currentSavings = ko.observable();
-    this.movingCosts = ko.observable();
-    this.interestRate = ko.observable();
-    this.repaymentTerm = ko.observable();
-    this.income1 = ko.observable();
-    this.income2 = ko.observable();
+    this.marketValue = ko.observable(0);
+    this.share = ko.observable(0);
+    this.currentSavings = ko.observable(0);
+    this.movingCosts = ko.observable(0);
+    this.interestRate = ko.observable(0);
+    this.repaymentTerm = ko.observable(0);
+    this.income1 = ko.observable(0);
+    this.selfEmployed1 = ko.observable();
+    this.income2 = ko.observable(0);
+    this.selfEmployed2 = ko.observable();
     //this.netMonthly = ko.observable();
-    this.serviceCharge = ko.observable();
-    this.rentPercentage = ko.observable();
+    this.serviceCharge = ko.observable(0);
+    this.rentPercentage = ko.observable(0);
 
     };
 
@@ -151,7 +147,6 @@ $('#details-tabs a').click(function (e) {
     });
 
     this.monthlyMortgage = ko.computed(function(){
-    
       var amount = parseInt(self.amountBorrowing());
       var years = parseInt(self.repaymentTerm());
       var rate = parseFloat(self.interestRate());
@@ -203,21 +198,46 @@ $('#details-tabs a').click(function (e) {
     });
 
     this.netMonthly = ko.computed(function(){
-      console.log(typeof(ko.utils.unwrapObservable(self.income2())));
+
+      //console.log(typeof(ko.utils.unwrapObservable(self.income2())));
       this.ni = ko.computed(function(){
+        
         var monthlyGross1 = parseInt(self.income1()) / 12;
-        //var monthlyGross2 = 0;
-        //if (self.income2() > 0){ monthlyGross2 = parseInt(self.income2())};
-        var pt = 672; //primary threshold
-        var uel = 3532 // upper earnings limit
-        var rate1 = 0.12;
-        var rate2 = 0.02;
+        var monthlyGross2 = parseInt(self.income2()) / 12;
+        console.log(monthlyGross1);
+        function ni_paye(amount){
+          console.log(amount);
+          var pt = 672; //primary threshold
+          var uel = 3532 // upper earnings limit
+          var rate1 = 0.12; //yr 2015/2016 - for monthyl income between uel and pt
+          var rate2 = 0.02; //yr 2015/2016
+        };
+        
+        function ni_se(amount){
+          console.log(amount);
+          var class2 = (2.8 * 52) / 12 // yr 2015/2016 flat weekly rate
+          var class4threshold = 8060; // yr 2015/2016 class 4 threshold. Not paid on yearly income below this
+          var class4Lb = 42385; // yr 2015/2016 class 4 is 9% up to this amount
+          var class4Lrate = 0.09; 
+          var class4Urate = 0.02; // 2% paid on earnings above the lower band 
+        };
+        //ni_se(monthlyGross1);
+        if(self.selfEmployed1() == true) {
+          console.log(monthlyGross1 - ni_se(monthlyGross1))
+        }
+        else {
+          console.log(monthlyGross1 - ni_paye(monthlyGross1))
+        }
+      
+      });
 
-        //return monthlyGross1 + monthlyGross2;
-
+      this.tax = ko.computed(function(){
+        var taxThreshold = 10600; // yr 2015/2016 tax threshold
 
       });
-      console.log(self.income2());
+
+      // return ?
+
     });
 
 
@@ -244,7 +264,19 @@ $('#details-tabs a').click(function (e) {
 var data = [];
 function getData() {
   $("input").each(function(){
-    var v = $(this).val();
+    var thisType = $(this)[0].type;
+    var v;
+    var k;
+    console.log($(this));
+    
+    if(thisType == "number") {
+      v = $(this).val();
+    };
+    if(thisType == "checkbox") {
+      var v = $(this).is(":checked");
+      //console.log(v);
+    };
+    
     var k = $(this).attr("id");
     var thisData = {};
     thisData[k] = v;
@@ -267,7 +299,7 @@ function deleteCookie(name) {
 }
 
 $(".formSubmit").on("click", function(e){
-  //e.preventDefault();
+  e.preventDefault();
   getData();
   createCookie('purchaseData',JSON.stringify(data),1000);
 });
@@ -280,4 +312,15 @@ $(".clear").on("click", function(){
   $(this).prev().val("").focus();
 });
 
+$("input").on("focus",function(){
+  if ($(this)[0].value == "0") {
+    $(this).val("");
+  }
+});
+$("input").on("blur",function(){
+  if ($(this)[0].value == "") {
+    $(this).val(0);
+  }
+});
 
+//console.log($("#selfEmployed1").is(":checked"));
