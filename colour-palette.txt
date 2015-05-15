@@ -1,0 +1,5 @@
+Red - 7d1935
+blue - 4a96ad
+pale - f6f3ee
+white - ffffff
+warning - d9534f
