@@ -204,13 +204,15 @@ $('#details-tabs a').click(function (e) {
         
         var monthlyGross1 = parseInt(self.income1()) / 12;
         var monthlyGross2 = parseInt(self.income2()) / 12;
-        console.log(monthlyGross1);
+        //console.log(monthlyGross1);
+
         function ni_paye(amount){
           console.log(amount);
           var pt = 672; //primary threshold
           var uel = 3532 // upper earnings limit
           var rate1 = 0.12; //yr 2015/2016 - for monthyl income between uel and pt
           var rate2 = 0.02; //yr 2015/2016
+          return amount;
         };
         
         function ni_se(amount){
@@ -220,14 +222,21 @@ $('#details-tabs a').click(function (e) {
           var class4Lb = 42385; // yr 2015/2016 class 4 is 9% up to this amount
           var class4Lrate = 0.09; 
           var class4Urate = 0.02; // 2% paid on earnings above the lower band 
+          return amount;
         };
         //ni_se(monthlyGross1);
-        if(self.selfEmployed1() == true) {
-          console.log(monthlyGross1 - ni_se(monthlyGross1))
+        if(self.selfEmployed1()) {
+          ni_se(monthlyGross1);
         }
         else {
-          console.log(monthlyGross1 - ni_paye(monthlyGross1))
+          ni_paye(monthlyGross1)
+        };
+        if(self.selfEmployed2()) {
+          ni_se(monthlyGross2);
         }
+        else {
+          ni_paye(monthlyGross2)
+        };
       
       });
 
