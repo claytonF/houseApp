@@ -79,14 +79,14 @@
                       </div>                    
                     </div>
                     
-                    <div class="form-group">
+                    <!-- <div class="form-group">
                       <label for="netMonthly">Net monthly income (total for joint applicants)</label>
                       <div class="input-group">
                         <div class="input-group-addon">£</div>
                         <input id="netMonthly" data-bind="textInput:netMonthly" type="number" min="100" max="10000" step="1" class="form-control">
                         <div class="input-group-addon clear"><span aria-hidden="true">&times;</span></div>
                       </div>
-                    </div>              
+                    </div>    -->           
                     <div class="form-group">
                       <label for="movingCosts">Estimated moving costs </label>
                       <span data-toggle="popover" data-placement="top" data-container="body" data-content="This will include solicitors fees, various registry searches, mortgage broker, mortgage arrangement fee, moving costs, furniture. Basically estimate (generously) how much cash you will need to complete the move. We think £8000 is probably a good starting point, but it could be more!"><span class="glyphicon glyphicon-info-sign"></span></span>
@@ -177,7 +177,7 @@
               <div data-bind="css:savingsEnough" class="alert">Minumum savings required: 
                 <span data-bind="visible: savingsRequired ">
                   <span>£</span><span data-bind="text:savingsRequired"></span>
-                  <span data-toggle="popover" data-placement="top" data-container="body" data-content=""><span class="glyphicon glyphicon-info-sign"></span></span>
+                  <span data-toggle="popover" data-placement="top" data-container="body" data-content="This is stamp duty plus moving costs plus a ten percent deposit. The larger your deposit the higher this figure will be. "><span class="glyphicon glyphicon-info-sign"></span></span>
                 </span>
               </div>
               <div data-bind="css:salaryEnough" class="alert">Multiple of income (salary): 
@@ -208,6 +208,7 @@
             <div>Mortgage:
               <span data-bind="visible:monthlyMortgage ">
                 <span>£</span><span data-bind="text:monthlyMortgage"></span>
+                <span data-toggle="popover" data-placement="top" data-container="body" data-content="This really is only an estimate. Of all the figures on here, this is the least accurate and the mortgage you actually pay will almost certainly be different."><span class="glyphicon glyphicon-info-sign"></span></span>
               </span>
             </div>
             <div>Service charge: 
@@ -227,15 +228,29 @@
             </div>
             
             <hr>
-            <h4>Other stuff</h4>
+            <h4>Other Information</h4>
             <div>Amount borrowing:
               <span data-bind="visible:amountBorrowing ">
                 <span>£</span><span data-bind="text:amountBorrowing"></span>
+                <span data-toggle="popover" data-placement="top" data-container="body" data-content="This is the percentage being bought - deposit."><span class="glyphicon glyphicon-info-sign"></span></span>
+              </span>
+            </div>
+            <div>Total monthly net income:
+              <span data-bind="visible:netMonthly ">
+                <span>£</span><span data-bind="text:netMonthly"></span>
+                <span data-toggle="popover" data-placement="top" data-container="body" data-content="This is calculated based on the yearly income figures provided and whether they are based on self-employed status or not. It is gross income - income tax - national insurance. It does not take into account deductions related to pensions, or anything else and assumes you are under 65 and over 21. Like all the figures here this is a only a guide. Calculations are based on figures from hmrc website for the tax year 2015/2016"><span class="glyphicon glyphicon-info-sign"></span></span>
+              </span>
+            </div>
+            <div>Maximum deposit available:
+              <span data-bind="visible:deposit ">
+                <span>£</span><span data-bind="text:deposit"></span>
+                <span data-toggle="popover" data-placement="top" data-container="body" data-content="This is calculated as: total savings - moving costs - stamp duty. There may well be other costs you need to take into consideration that lowers this figure. "><span class="glyphicon glyphicon-info-sign"></span></span>
               </span>
             </div>
             <div>Stamp duty to pay:
               <span data-bind="visible:stampDuty ">
                 <span>£</span><span data-bind="text:stampDuty"></span>
+                <span data-toggle="popover" data-placement="top" data-container="body" data-content="Stamp duty brackets and percentages are taken from hmrc website for the tax year 2015/2016."><span class="glyphicon glyphicon-info-sign"></span></span>
               </span>
             </div>
           </div>

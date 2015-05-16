@@ -140,7 +140,9 @@ $('#details-tabs a').click(function (e) {
       return self.shareValue() - self.deposit();
     });
     this.depositBracket = ko.computed(function(){
-      return parseInt(self.deposit() / self.amountBorrowing() * 100);
+      var result = parseInt(self.deposit() / self.amountBorrowing() * 100);
+      if (result > 0) {return result}
+      //return parseInt(self.deposit() / self.amountBorrowing() * 100);
     });
     this.depositEnough = ko.computed(function(){
       return self.depositBracket() < 10 ? "alert-danger" : "alert-success";
@@ -175,7 +177,9 @@ $('#details-tabs a').click(function (e) {
       years = lnYears;
 
       var lnPayment = Math.round(calcPayment(lnAmt,lnRate,lnYears*12));
-      return Math.floor(lnPayment,2,1);
+      
+      if(lnPayment > 0) {return Math.floor(lnPayment,2,1)};
+      
     });
 
     this.totalMonthly = ko.computed(function(){
@@ -191,67 +195,120 @@ $('#details-tabs a').click(function (e) {
     
 
     this.multipleOfSalary = ko.computed(function(){
-      return parseFloat((self.amountBorrowing() / (self.income1() + self.income2)).toFixed(1));
+      var result = parseFloat((self.amountBorrowing() / (parseInt(self.income1()) + parseInt(self.income2()))).toFixed(1));
+      if (result > 0) {return result };
+      //return parseFloat((self.amountBorrowing() / (parseInt(self.income1()) + parseInt(self.income2()))).toFixed(1));
     });
     this.salaryEnough = ko.computed(function(){
       return self.multipleOfSalary() > 4 ? "alert-danger" : "alert-success";
     });
 
     this.netMonthly = ko.computed(function(){
+      var monthlyGross1 = parseInt(self.income1()) / 12;
+      var monthlyGross2 = parseInt(self.income2()) / 12;
 
-      //console.log(typeof(ko.utils.unwrapObservable(self.income2())));
-      this.ni = ko.computed(function(){
+      function ni(amount,type){
         
-        var monthlyGross1 = parseInt(self.income1()) / 12;
-        var monthlyGross2 = parseInt(self.income2()) / 12;
-        //console.log(monthlyGross1);
-
         function ni_paye(amount){
-          console.log(amount);
+          
           var pt = 672; //primary threshold
           var uel = 3532 // upper earnings limit
-          var rate1 = 0.12; //yr 2015/2016 - for monthyl income between uel and pt
+          var rate1 = 0.12; //yr 2015/2016 - for monthly income between uel and pt
           var rate2 = 0.02; //yr 2015/2016
-          return amount;
+          var lowerRate;
+          var upperRate;
+
+          if(amount > uel) {lowerRate = (uel - pt) * rate1}
+          else {lowerRate = (amount - pt) * rate1};
+          if(amount > uel) {upperRate = (amount - uel) * rate2}
+          else {upperRate = 0;};
+          return lowerRate + upperRate;      
         };
-        
+
         function ni_se(amount){
-          console.log(amount);
-          var class2 = (2.8 * 52) / 12 // yr 2015/2016 flat weekly rate
+          var grossYearly = amount * 12;
+          var class2 = (2.8 * 52) // yr 2015/2016 flat weekly rate
           var class4threshold = 8060; // yr 2015/2016 class 4 threshold. Not paid on yearly income below this
           var class4Lb = 42385; // yr 2015/2016 class 4 is 9% up to this amount
           var class4Lrate = 0.09; 
           var class4Urate = 0.02; // 2% paid on earnings above the lower band 
-          return amount;
+          var lowerRate;
+          var upperRate;
+
+          if(grossYearly > 0) {
+            if(grossYearly > class4Lb) {lowerRate = (class4Lb - class4threshold) * class4Lrate;}
+            else {lowerRate = (grossYearly - class4threshold) * class4Lrate;}
+            if(grossYearly > class4Lb) {upperRate = (grossYearly - class4Lb) * class4Urate;}
+            else {upperRate = 0;}
+            return parseFloat(((lowerRate + upperRate + class2)/12).toFixed(2));          
+          };
+        };       
+        if(type) { return ni_se(amount);}
+        else {return ni_paye(amount)};
+      };
+
+      function tax(amount) {
+        var bracket1 = {
+          threshold:10600,
+          tax: 0
         };
-        //ni_se(monthlyGross1);
-        if(self.selfEmployed1()) {
-          ni_se(monthlyGross1);
+        var bracket2 = {
+          threshold:31784,
+          tax: 0.2
+        };
+        var bracket3 = {
+          tax: 0.4
+        };
+        function taxableIncome(amount) {
+          if(amount > bracket1.threshold) {
+             return amount - bracket1.threshold
+          }
+          else {
+            return amount;
+          }
+        };
+        function upperRate(amount) {
+          var taxable = taxableIncome(amount);
+
+          if(taxable > bracket2.threshold) {
+            return (taxable - bracket2.threshold);
+          }
+          else {
+            return 0;
+          }
         }
-        else {
-          ni_paye(monthlyGross1)
+        function basicRate(amount) {
+          
+          var lowerTax = taxableIncome(amount);
+          var upperTax = upperRate(amount);
+          return (lowerTax - upperTax) * bracket2.tax;
+
         };
-        if(self.selfEmployed2()) {
-          ni_se(monthlyGross2);
+        function totalMonthlyTax(amount) {
+          return (basicRate(amount) + (upperRate(amount) * bracket3.tax));
         }
-        else {
-          ni_paye(monthlyGross2)
-        };
-      
+        var taxDeduction = totalMonthlyTax(self.income1());
+        return (totalMonthlyTax(amount))/12;
+
+      };
+
+
+      this.net1 = ko.computed(function(){
+        
+        return monthlyGross1 - (ni(monthlyGross1, self.selfEmployed1()) + tax(self.income1())); 
+      });
+      this.net2 = ko.computed(function(){
+        return monthlyGross2 - (ni(monthlyGross2, self.selfEmployed2()) + tax(self.income2()))
       });
 
-      this.tax = ko.computed(function(){
-        var taxThreshold = 10600; // yr 2015/2016 tax threshold
-
-      });
-
-      // return ?
+      return parseFloat(((this.net1() + this.net2()).toFixed(2)))
 
     });
 
-
     this.multipleOfNetIncome = ko.computed(function(){
-      return parseFloat((self.totalMonthly() / self.netMonthly() * 100).toFixed(1));
+      var result = parseFloat((self.totalMonthly() / self.netMonthly() * 100).toFixed(1));
+      if (result > 0) {return result};
+       
     });
 
 
@@ -260,8 +317,9 @@ $('#details-tabs a').click(function (e) {
 
       return self.multipleOfNetIncome() > 43 ? "alert-danger" : "alert-success";
     });
+    
     this.amountLeftMonthly = ko.computed(function(){
-      return self.netMonthly() - self.totalMonthly();
+      return parseFloat((self.netMonthly() - self.totalMonthly()).toFixed(2));
     });
 
   };
@@ -276,7 +334,6 @@ function getData() {
     var thisType = $(this)[0].type;
     var v;
     var k;
-    console.log($(this));
     
     if(thisType == "number") {
       v = $(this).val();
