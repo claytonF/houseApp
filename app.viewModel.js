@@ -217,12 +217,13 @@ $('#details-tabs a').click(function (e) {
           var rate2 = 0.02; //yr 2015/2016
           var lowerRate;
           var upperRate;
-
-          if(amount > uel) {lowerRate = (uel - pt) * rate1}
-          else {lowerRate = (amount - pt) * rate1};
-          if(amount > uel) {upperRate = (amount - uel) * rate2}
-          else {upperRate = 0;};
-          return lowerRate + upperRate;      
+          //if(amount > 0) {
+            if(amount > uel) {lowerRate = (uel - pt) * rate1}
+            if(amount < uel) {lowerRate = 0};
+            if(amount > uel) {upperRate = (amount - uel) * rate2}
+            else {upperRate = 0;};
+            return lowerRate + upperRate;
+          //};   
         };
 
         function ni_se(amount){
@@ -242,7 +243,8 @@ $('#details-tabs a').click(function (e) {
             else {upperRate = 0;}
             return parseFloat(((lowerRate + upperRate + class2)/12).toFixed(2));          
           };
-        };       
+        };   
+
         if(type) { return ni_se(amount);}
         else {return ni_paye(amount)};
       };
