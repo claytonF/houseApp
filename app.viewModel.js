@@ -137,7 +137,8 @@ $('#details-tabs a').click(function (e) {
     });
 
     this.amountBorrowing = ko.computed(function(){
-      return self.shareValue() - self.deposit();
+      var result = self.shareValue() - self.deposit();
+      if (result > 0) {return result};
     });
     this.depositBracket = ko.computed(function(){
       var result = parseInt(self.deposit() / self.amountBorrowing() * 100);
