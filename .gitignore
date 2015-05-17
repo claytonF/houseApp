@@ -1,0 +1,7 @@
+bower_components
+components
+bootstrap
+node_modules
+thumbs.db
+.DS_store
+.sass-cache

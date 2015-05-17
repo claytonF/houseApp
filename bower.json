@@ -1,0 +1,22 @@
+{
+  "name": "houseApp",
+  "version": "0.0.0",
+  "homepage": "https://github.com/claytonF/houseApp",
+  "authors": [
+    "CFussell <clayton.fussell@gmail.com>"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "public/components",
+    "test",
+    "tests"
+  ],
+  "dependencies" : {
+    "jquery" : "*",
+    "bootstrap-sass" : "*",
+    "knockout" : "*"
+  }
+}

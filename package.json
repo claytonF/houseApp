@@ -1,0 +1,18 @@
+{
+    "name" : "Grunt",
+    "version" : "0.1.0",
+    "author" : "Clayton Fussell",
+    "private" : true,
+
+    "devDependencies" : {
+        "grunt" :					"~0.4.0",
+        "grunt-contrib-cssmin": 	"*",
+        "grunt-contrib-sass": 		"*",
+        "grunt-contrib-uglify": 	"*",
+        "grunt-contrib-watch": 		"*",
+        "grunt-cssc":				"*",
+        "grunt-postcss":			"*",
+        "grunt-htmlhint":			"*",
+        "matchdep":					"*"
+    }
+}
