@@ -7,7 +7,7 @@
      
      <!-- Latest compiled and minified CSS -->
       <!--<link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">-->
-      <link rel="stylesheet" href="css/style.css">
+      <link rel="stylesheet" href="css/bootstrap.css">
 
       <!-- Optional theme -->
       <!--<link rel="stylesheet" href="bootstrap/css/bootstrap-theme.min.css">-->
@@ -15,11 +15,11 @@
       <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
 
       <!-- Latest compiled and minified JavaScript -->
-      <script src="/components/bootstrap-sass/assets/javascripts/bootstrap.min.js"></script>
+      <script src="bootstrap/js/bootstrap.min.js"></script>
       <!--<script src="//cdnjs.cloudflare.com/ajax/libs/numeral.js/1.4.5/numeral.min.js"></script>-->
 
       <!-- knockout -->
-      <script src="/components/knockout/dist/knockout.debug.js" type="text/javascript"></script>
+      <script src="bower_components/knockout/dist/knockout.debug.js" type="text/javascript"></script>
       
   </head>
   <body>
@@ -44,15 +44,6 @@
                       <div class="input-group">
                         <div class="input-group-addon">%</div>
                         <input id="share"  data-bind="textInput:share" type="number" min="25" max="100" step="5" class="form-control">
-                        <div class="input-group-addon clear"><span aria-hidden="true">&times;</span></div>
-                      </div>
-                    </div>
-                    <div class="form-group">
-                      <label for="depositPercentage">Deposit</label>
-                      <span data-toggle="popover" data-placement="top" data-container="body" data-content="Put the deposit percentage you want to achieve and the app will tell you if this is possible based on your total savings against moving costs, stamp duty etc."><span class="glyphicon glyphicon-info-sign"></span></span>
-                      <div class="input-group">
-                        <div class="input-group-addon">%</div>
-                        <input id="depositPercentage"  data-bind="textInput:depositPercentage" type="number" min="5" max="100" step="5" class="form-control">
                         <div class="input-group-addon clear"><span aria-hidden="true">&times;</span></div>
                       </div>
                     </div>
@@ -187,36 +178,41 @@
       </div>
       <div class="col-md-6" id="results">
         <div class="panel panel-default">
-          <div class="panel-heading"><h4>Results</h4></div> 
+					<div class="panel-heading"><h4>Results</h4></div>	
           <div class="panel-body">
-
+            <h4>The important stuff</h4>
             <div class="results-container">
-              <div data-bind="css:savingsEnough" class="alert">Savings required: 
+              <div data-bind="css:savingsEnough" class="alert">Minumum savings required: 
                 <span data-bind="visible: savingsRequired ">
                   <span>£</span><span data-bind="text:savingsRequired"></span>
-                  <small>(You have £<span data-bind="text:currentSavings"></span> available)</small>
                   <span data-toggle="popover" data-placement="top" data-container="body" data-content="This is stamp duty plus moving costs plus a ten percent deposit. The larger your deposit the higher this figure will be. "><span class="glyphicon glyphicon-info-sign"></span></span>
                 </span>
               </div>
               <div data-bind="css:salaryEnough" class="alert">Multiple of income (salary): 
                 <span data-bind="visible: multipleOfSalary ">
                   <span data-bind="text:multipleOfSalary"></span><span>x</span>
-                  <span data-toggle="popover" data-placement="top" data-container="body" data-content="If this is more than 4.5x your total yearly salary, it can get more difficult to find a mortgage. It is also important to bear in mind that other factors like debts and other monthly costs will play a factor in the multiple a bank will lend."><span class="glyphicon glyphicon-info-sign"></span></span>
+                  <span data-toggle="popover" data-placement="top" data-container="body" data-content="If this is more than 4x your total yearly salary, it can get more difficult to find a mortgage."><span class="glyphicon glyphicon-info-sign"></span></span>
                 </span>
               </div>
               <div data-bind="css:netIncomeEnough" class="alert">percentage of net income:
                 <span data-bind="visible: multipleOfNetIncome ">
-                  <span data-bind="text:multipleOfNetIncome"></span><span>%</span> 
-                  <span data-bind="visible: amountLeftMonthly ">
-                  <small>(Amount leftover each month: £<span data-bind="text:amountLeftMonthly"></span>)</small>
-                  <span data-toggle="popover" data-placement="top" data-container="body" data-content="If this is more than 40-43% of your net montly income, you may find it more difficult to get a mortgage. This will show as red above 43%"><span class="glyphicon glyphicon-info-sign"></span></span>
+                  <span data-bind="text:multipleOfNetIncome"></span><span>%</span> <span data-toggle="popover" data-placement="top" data-container="body" data-content="If this is more than 40-43% of your net montly income, you may find it more difficult to get a mortgage. This will show as red above 43%"><span class="glyphicon glyphicon-info-sign"></span></span>
                 </span>
               </div>
-              
-              
+              <div data-bind="css:netIncomeEnough" class="alert">Amount left each month after house costs:
+                <span data-bind="visible: amountLeftMonthly ">
+                  <span>£</span><span data-bind="text:amountLeftMonthly"></span>
+                  <span data-toggle="popover" data-placement="top" data-container="body" data-content="This will show as red when the percentage of net income being used on housing costs is above 43% "><span class="glyphicon glyphicon-info-sign"></span></span>
+                </span>
+              </div>
+              <div data-bind="css:depositEnough" class="alert">deposit percentage:
+                <span data-bind="visible: depositBracket ">
+                  <span data-bind="text:depositBracket"></span><span>%</span>
+                </span>
+              </div>
             </div>
             <hr>
-            <h4>Monthly costs</h4>
+            <h4>Recurring costs</h4>
             <div>Mortgage:
               <span data-bind="visible:monthlyMortgage ">
                 <span>£</span><span data-bind="text:monthlyMortgage"></span>
@@ -247,19 +243,18 @@
                 <span data-toggle="popover" data-placement="top" data-container="body" data-content="This is the percentage being bought - deposit."><span class="glyphicon glyphicon-info-sign"></span></span>
               </span>
             </div>
-            <div>Deposit value:
-              <span data-bind="visible:depositValue ">
-                <span>£</span><span data-bind="text:depositValue"></span>
-                <span data-toggle="popover" data-placement="top" data-container="body" data-content="This is the value of the deposit at the percentage you selected."><span class="glyphicon glyphicon-info-sign"></span></span>
-              </span>
-            </div>
             <div>Total monthly net income:
               <span data-bind="visible:netMonthly ">
                 <span>£</span><span data-bind="text:netMonthly"></span>
                 <span data-toggle="popover" data-placement="top" data-container="body" data-content="This is calculated based on the yearly income figures provided and whether they are based on self-employed status or not. It is gross income - income tax - national insurance. It does not take into account deductions related to pensions, or anything else and assumes you are under 65 and over 21. Like all the figures here this is a only a guide. Calculations are based on figures from hmrc website for the tax year 2015/2016"><span class="glyphicon glyphicon-info-sign"></span></span>
               </span>
             </div>
-            
+            <div>Maximum deposit available:
+              <span data-bind="visible:deposit ">
+                <span>£</span><span data-bind="text:deposit"></span>
+                <span data-toggle="popover" data-placement="top" data-container="body" data-content="This is calculated as: total savings - moving costs - stamp duty. There may well be other costs you need to take into consideration that lowers this figure. "><span class="glyphicon glyphicon-info-sign"></span></span>
+              </span>
+            </div>
             <div>Stamp duty to pay:
               <span data-bind="visible:stampDuty ">
                 <span>£</span><span data-bind="text:stampDuty"></span>

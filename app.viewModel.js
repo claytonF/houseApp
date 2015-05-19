@@ -50,7 +50,6 @@ $('#details-tabs a').click(function (e) {
       this.movingCosts = ko.observable(parseInt(houseObject.movingCosts));
       this.interestRate = ko.observable(parseFloat(houseObject.interestRate));
       this.repaymentTerm = ko.observable(parseInt(houseObject.repaymentTerm));
-      this.depositPercentage = ko.observable(parseInt(houseObject.depositPercentage));
       this.income1 = ko.observable(houseObject.income1);
       this.selfEmployed1 = ko.observable(houseObject.selfEmployed1);
       this.income2 = ko.observable(houseObject.income2);
@@ -75,7 +74,6 @@ $('#details-tabs a').click(function (e) {
     this.movingCosts = ko.observable(0);
     this.interestRate = ko.observable(0);
     this.repaymentTerm = ko.observable(0);
-    this.depositPercentage = ko.observable(0);
     this.income1 = ko.observable(0);
     this.selfEmployed1 = ko.observable();
     this.income2 = ko.observable(0);
@@ -91,12 +89,6 @@ $('#details-tabs a').click(function (e) {
     
     this.shareValue = ko.computed(function(){
       return (self.marketValue() / 100) * self.share()
-    });
-
-    this.depositValue = ko.computed(function(){
-      if (parseInt(self.depositPercentage()) != 0) {
-        return (self.shareValue() / 100) * parseInt(self.depositPercentage());
-      };
     });
     //console.log(this.shareValue());
 
@@ -145,7 +137,7 @@ $('#details-tabs a').click(function (e) {
     });
 
     this.amountBorrowing = ko.computed(function(){
-      var result = self.shareValue() - self.depositValue();
+      var result = self.shareValue() - self.deposit();
       if (result > 0) {return result};
     });
     this.depositBracket = ko.computed(function(){
@@ -196,10 +188,8 @@ $('#details-tabs a').click(function (e) {
     });
 
     this.savingsRequired = ko.computed(function(){
-      return self.stampDuty() + parseInt(self.movingCosts()) + self.depositValue();
+      return self.stampDuty() + parseInt(self.movingCosts()) + self.shareValue() * 0.1;
     });
-
-
     this.savingsEnough = ko.computed(function(){
       return self.savingsRequired() > self.currentSavings() ? "alert-danger" : "alert-success";
     });
@@ -211,7 +201,7 @@ $('#details-tabs a').click(function (e) {
       //return parseFloat((self.amountBorrowing() / (parseInt(self.income1()) + parseInt(self.income2()))).toFixed(1));
     });
     this.salaryEnough = ko.computed(function(){
-      return self.multipleOfSalary() > 4.5 ? "alert-danger" : "alert-success";
+      return self.multipleOfSalary() > 4 ? "alert-danger" : "alert-success";
     });
 
     this.netMonthly = ko.computed(function(){
