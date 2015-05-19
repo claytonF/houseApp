@@ -17,7 +17,7 @@ require('matchdep').filterDev('grunt-*').forEach(grunt.loadNpmTasks);
 		},
 		watch: {
 			css: {
-				files: ['components/bootstrap-sass/assets/stylesheets/*.scss', 'components/bootstrap-sass/assets/stylesheets/mixins/*.scss'],
+				files: ['components/bootstrap-sass/assets/stylesheets/*.scss', 'components/bootstrap-sass/assets/stylesheets/bootstrap/mixins/*.scss', 'components/bootstrap-sass/assets/stylesheets/bootstrap/*.scss'],
 				tasks: ['buildcss']
 			}
 		}

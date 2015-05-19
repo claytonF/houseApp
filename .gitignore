@@ -1,5 +1,6 @@
 bower_components
-components
+components/jquery
+components/knockout
 bootstrap
 node_modules
 thumbs.db
