@@ -11,7 +11,7 @@ require('matchdep').filterDev('grunt-*').forEach(grunt.loadNpmTasks);
 		sass: {
 			build: {
 				files: {
-					'src/css/style.css': 'src/sass/bootstrap.scss'
+					'dist/css/style.css': 'dist/sass/bootstrap.scss'
 				}
 			}
 		},
@@ -20,6 +20,20 @@ require('matchdep').filterDev('grunt-*').forEach(grunt.loadNpmTasks);
 				files: ['components/bootstrap-sass/assets/stylesheets/*.scss', 'components/bootstrap-sass/assets/stylesheets/bootstrap/mixins/*.scss', 'components/bootstrap-sass/assets/stylesheets/bootstrap/*.scss'],
 				tasks: ['buildcss']
 			}
+		},
+		copy: {
+			knockoutjs: {
+				expand: true,
+				src: 'components/knockout/dist/knockout.js',
+				dest: 'dist/js/',
+				flatten: true
+			},
+			bootstrapjs: {
+				expand: true,
+				src: 'components/bootstrap-sass/assets/javascripts/bootstrap.min.js',
+				dest: 'dist/js/',
+				flatten: true
+			}		
 		}
 	});
 
