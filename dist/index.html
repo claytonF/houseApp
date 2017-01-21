@@ -4,27 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     <title>HouseApp</title> 
-     
-     <!-- Latest compiled and minified CSS -->
-      <!--<link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">-->
-
-      <!-- Optional theme -->
-      <link rel="stylesheet" href="css/style.css">
-      <!--<link rel="stylesheet" href="css/style.css">-->
-      <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
-
-      <!-- Latest compiled and minified JavaScript -->
-      <script src="js/bootstrap.min.js"></script>
-      <!--<script src="//cdnjs.cloudflare.com/ajax/libs/numeral.js/1.4.5/numeral.min.js"></script>-->
-
-      <!-- knockout -->
-      <script src="js/knockout.js" type="text/javascript"></script>
-      
+    <link rel="stylesheet" href="css/style.min.css">
+    <script type="text/javascript" src="js/libs.js"></script> 
   </head>
   <body>
-
     <div class="container" id="data">
-
       <div class="col-md-6">
         <div role="tab-panel">
           <ul class="nav nav-tabs" role="tablist" id="details-tabs">
@@ -32,51 +16,49 @@
             <li role="presentation"><a href="#propertyDetails" aria-controls="home" role="tab" data-toggle="tab"><span class="glyphicon glyphicon-home"></span> Fixed</a></li>
           </ul>
           <div class="tab-content">
-            
               <div role="tabpanel" class="tab-pane active" id="aboutYou">
-                <form>
+                <form role="form" data-toggle="validator">
                 <div class="panel panel-default">
                   <div class="panel-body">
                     <div class="form-group">
-                      <label for="share">Percentage purchasing</label>
+                      <label for="share">% purchasing</label>
                       <span data-toggle="popover" data-placement="top" data-container="body" data-content="If buying on the open market, put 100, if buying through shared ownership put the percentage you want to purchase (will be between 25% and 75% when you first buy."><span class="glyphicon glyphicon-info-sign"></span></span>
                       <div class="input-group">
                         <div class="input-group-addon">%</div>
-                        <input id="share"  data-bind="textInput:share" type="number" min="25" max="100" step="5" class="form-control">
+                        <input id="share" data-errors="Values must be between 25% and 100%" data-bind="textInput:share" type="number" min="25" max="100" class="form-control">
                         <div class="input-group-addon clear"><span aria-hidden="true">&times;</span></div>
                       </div>
+                      <div class="help-block with-errors"></div>
                     </div>
                     <div class="form-group">
-                      <label for="depositPercentage">Deposit</label>
+                      <label for="depositPercentage">Deposit %</label>
                       <span data-toggle="popover" data-placement="top" data-container="body" data-content="Put the deposit percentage you want to achieve and the app will tell you if this is possible based on your total savings against moving costs, stamp duty etc."><span class="glyphicon glyphicon-info-sign"></span></span>
                       <div class="input-group">
                         <div class="input-group-addon">%</div>
-                        <input id="depositPercentage"  data-bind="textInput:depositPercentage" type="number" min="5" max="100" step="5" class="form-control">
+                        <input id="depositPercentage" data-error="Values must be between 5 and 100" required data-bind="textInput:depositPercentage" type="number" min="5" max="100" class="form-control">
                         <div class="input-group-addon clear"><span aria-hidden="true">&times;</span></div>
+                        
                       </div>
+                      <div class="help-block with-errors"></div>
                     </div>
                     <div class="form-group">
                       <label for="repaymentTerm">Mortgage repayment term (years)</label>
                       <div class="input-group">
                         <div class="input-group-addon">yrs</div>          
-                        <input id="repaymentTerm" data-bind="textInput:repaymentTerm" type="number" min="25" max="30" step="1" class="form-control" >
+                        <input id="repaymentTerm" data-error="Values must be between 20 and 35 years" data-bind="textInput:repaymentTerm" type="number" min="20" max="35" step="1" class="form-control" >
                         <div class="input-group-addon clear"><span aria-hidden="true">&times;</span></div>
                       </div>
+                      <div class="help-block with-errors"></div>
                     </div>
                     <div class="form-group">
-                      <label for="interestRate">Mortgage Interest rate</label>
+                      <label for="interestRate">Mortgage Interest rate (%)</label>
                       <div class="input-group">
                         <div class="input-group-addon">%</div>          
-                        <input id="interestRate" data-bind="textInput:interestRate" type="number" min="1" max="10" step="0.5" class="form-control" >
+                        <input id="interestRate" data-error="Values must be between 1% and 10%" data-bind="textInput:interestRate" type="number" min="1" max="10" step="0.5" class="form-control" >
                         <div class="input-group-addon clear"><span aria-hidden="true">&times;</span></div>
                       </div>
-                    </div>
-
-
-
-
-                         
-                           
+                      <div class="help-block with-errors"></div>
+                    </div>  
                       <!--<button class="btn btn-primary formSubmit" >Update</button>
                       <button class="btn btn-default formClear">Clear all data</button>-->                   
                   </div>
@@ -84,7 +66,7 @@
               </form>
               </div>
               <div role="tabpanel" class="tab-pane" id="propertyDetails">
-                <form>
+                <form role="form" data-toggle="validator">
                 <div class="panel panel-default">
                   <div class="panel-body">
                       <div class="form-group">
@@ -100,11 +82,10 @@
                       <span data-toggle="popover" data-placement="bottom" data-container="body" data-content="This will have to cover stamp duty, moving costs, and deposit."><span class="glyphicon glyphicon-info-sign"></span></span>
                       <div class="input-group">
                         <div class="input-group-addon">£</div>
-                        <input id="currentSavings"  data-bind="textInput:currentSavings" type="number" min="1000" max="1000000" step="1000" class="form-control" >
+                        <input id="currentSavings"  data-bind="textInput:currentSavings" type="number" min="1000" max="1000000" step="1" class="form-control" >
                         <div class="input-group-addon clear"><span aria-hidden="true">&times;</span></div>
                       </div>
                     </div>
-                    
                       <p><strong>Annual income</strong> <span data-toggle="popover" data-placement="bottom" data-container="body" data-content="If you are PAYE, use your gross income, before deductions. If you are self employed, use your net income after deductions as this is what all tax and NI will be based on. The calculation will use class 2 and 4 national insurance."><span class="glyphicon glyphicon-info-sign"></span></span></p>
                       <div class="form-inline form-group">
                         <div class="form-group">
@@ -177,24 +158,20 @@
                     </div>
                   </div>
                 </form>
-                </div>
-
+              </div>
           </div>
-
         </div>
-
       </div>
       <div class="col-md-6" id="results">
         <div class="panel panel-default">
           <div class="panel-heading"><h4>Results</h4></div> 
           <div class="panel-body">
-
             <div class="results-container">
               <div data-bind="css:savingsEnough" class="alert">Savings required: 
                 <span data-bind="visible: savingsRequired ">
                   <span>£</span><span data-bind="text:savingsRequired"></span>
                   <small>(You have £<span data-bind="text:currentSavings"></span> available)</small>
-                  <span data-toggle="popover" data-placement="top" data-container="body" data-content="This is stamp duty plus moving costs plus a ten percent deposit. The larger your deposit the higher this figure will be. "><span class="glyphicon glyphicon-info-sign"></span></span>
+                  <span data-toggle="popover" data-placement="bottom" data-container="body" data-content="This is stamp duty plus moving costs plus a ten percent deposit. The larger your deposit the higher this figure will be. "><span class="glyphicon glyphicon-info-sign"></span></span>
                 </span>
               </div>
               <div data-bind="css:salaryEnough" class="alert">Multiple of income (salary): 
@@ -210,9 +187,7 @@
                   <small>(Amount leftover each month: £<span data-bind="text:amountLeftMonthly"></span>)</small>
                   <span data-toggle="popover" data-placement="top" data-container="body" data-content="If this is more than 40-43% of your net montly income, you may find it more difficult to get a mortgage. This will show as red above 43%"><span class="glyphicon glyphicon-info-sign"></span></span>
                 </span>
-              </div>
-              
-              
+              </div>   
             </div>
             <hr>
             <h4>Monthly costs</h4>
@@ -237,7 +212,6 @@
                 <span>£</span><span data-bind="text:totalMonthly"></span>
               </span></strong>
             </div>
-            
             <hr>
             <h4>Other Information</h4>
             <div>Amount borrowing:
@@ -258,7 +232,6 @@
                 <span data-toggle="popover" data-placement="top" data-container="body" data-content="This is calculated based on the yearly income figures provided and whether they are based on self-employed status or not. It is gross income - income tax - national insurance. It does not take into account deductions related to pensions, or anything else and assumes you are under 65 and over 21. Like all the figures here this is a only a guide. Calculations are based on figures from hmrc website for the tax year 2015/2016"><span class="glyphicon glyphicon-info-sign"></span></span>
               </span>
             </div>
-            
             <div>Stamp duty to pay:
               <span data-bind="visible:stampDuty ">
                 <span>£</span><span data-bind="text:stampDuty"></span>
@@ -267,12 +240,8 @@
             </div>
           </div>
         </div>
-
       </div>
     </div>
-  
-    <!--<script type="text/javascript" src="script.js"></script>-->
     <script type="text/javascript" src="js/app.viewModel.js"></script>
-
   </body>
 </html>

@@ -2721,7 +2721,6 @@ select[multiple].input-lg,
     -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 6px #67b168;
     box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 6px #67b168; }
 .has-success .input-group-addon {
-  color: #3c763d;
   border-color: #4A96AD;
   background-color: #4A96AD; }
 .has-success .form-control-feedback {
@@ -2743,7 +2742,6 @@ select[multiple].input-lg,
     -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 6px #c0a16b;
     box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 6px #c0a16b; }
 .has-warning .input-group-addon {
-  color: #8a6d3b;
   border-color: #4A96AD;
   background-color: #4A96AD; }
 .has-warning .form-control-feedback {
@@ -2765,7 +2763,6 @@ select[multiple].input-lg,
     -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 6px #ce8483;
     box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 6px #ce8483; }
 .has-error .input-group-addon {
-  color: #a94442;
   border-color: #4A96AD;
   background-color: #4A96AD; }
 .has-error .form-control-feedback {

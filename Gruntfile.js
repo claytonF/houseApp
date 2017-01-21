@@ -21,6 +21,17 @@ require('matchdep').filterDev('grunt-*').forEach(grunt.loadNpmTasks);
 				tasks: ['buildcss']
 			}
 		},
+		cssmin: {
+			target: {
+				files: [{
+					expand: true,
+					cwd: 'dist/css',
+					src: 'style.css',
+					dest: 'dist/css',
+					ext: '.min.css'
+				}]
+			}
+		},
 		copy: {
 			knockoutjs: {
 				expand: true,
@@ -33,11 +44,25 @@ require('matchdep').filterDev('grunt-*').forEach(grunt.loadNpmTasks);
 				src: 'components/bootstrap-sass/assets/javascripts/bootstrap.min.js',
 				dest: 'dist/js/',
 				flatten: true
+			},
+			bootstrapValidator: {
+				expand: true,
+				src: 'components/bootstrap-validator/dist/validator.min.js',
+				dest: 'dist/js/',
+				flatten: true
 			}		
+		},
+		concat: {
+			dist: {
+				src: ['components/knockout/dist/knockout.js','components/jquery/dist/jquery.min.js','components/bootstrap-sass/assets/javascripts/bootstrap.min.js','components/bootstrap-validator/dist/validator.min.js'],
+				dest: 'dist/js/libs.js'
+			}
 		}
+
 	});
 
-	grunt.registerTask('default', []);
+	grunt.registerTask('default', ['cssmin']);
 	grunt.registerTask('buildcss', ['sass']);
+	grunt.registerTask('deploy', ['sass','cssmin','copy']);
 
 };
